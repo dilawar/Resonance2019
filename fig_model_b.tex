@@ -1,0 +1,64 @@
+\RequirePackage{luatex85,shellesc}
+\documentclass[trim,multi=false,]{standalone}
+\usepackage{pgfplots}
+\usepackage{chemfig}
+\usepackage{tikz}
+\usetikzlibrary{calc,positioning, arrows, arrows.meta}
+\usepackage{amsmath,amssymb}
+\usepackage{mathtools}
+% \usepackage[sfdefault]{FiraSans}
+% \usepackage[small]{eulervm}
+\usepackage{opensans}
+\usepackage{mathpazo}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=1 , every node/.style={} ]
+
+    \node (a) {
+        \begin{tikzpicture}[scale=1 , every node/.style={}]
+            \node (x) {$X$};
+            \node[right=of x] (xsim) {$X^\sim$};
+            \node[right=of xsim] (xstar) {$X^*$};
+
+            \draw[-Stealth] (x) -- (xsim);
+            \draw[-Stealth, very thick] (xsim) -- (xstar);
+
+            \draw[-Circle] (xstar) edge[in=90, out=120] ([xshift=8mm]xsim);
+
+            % desphospho
+            \draw[-Stealth, thick, blue] (xsim) to[bend left] (x);
+            \draw[-Stealth, thick, blue] (xstar) edge[bend left] (x);
+
+            \path (xstar) -- (x) node[blue, midway, below=5mm] {\footnotesize P};
+
+            % Arrow above.
+            \draw[dotted, -Circle] (xstar) edge[out=110, in=90] ([xshift=8mm]x);
+            
+        \end{tikzpicture}	
+    };
+
+    \node[below=1mm of a] (b)
+    {
+        \begin{tabular}{l l}
+            \small Activation & \schemestart
+            $X$ \arrow{->[\footnotesize slow]} $X^\sim$ \arrow{->[\footnotesize fast]} $X^*$ 
+            \schemestop\label{reac:phospho} 
+            \\
+            \small \textcolor{blue}{Deactivation} & \schemestart
+            \color{blue} $X^\sim$ + P \arrow{<->>} \color{blue} $X^\sim$P
+                \arrow{->} \color{blue} X+P
+            \schemestop
+            \\
+            & \schemestart
+            \color{blue} $X^*$ + P \arrow{<->>} \color{blue}  $X^*$P \arrow{->}
+                \color{blue} X + P 
+            \schemestop\label{reac:depospho} \\
+            \small Turnover & \schemestart
+            $X^*$ + X \arrow{->} $X^\sim$ + $X^*$
+            \schemestop
+        \end{tabular}
+    };
+\end{tikzpicture}	
+
+\end{document}

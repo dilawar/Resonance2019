@@ -1,0 +1,38 @@
+\RequirePackage{luatex85,shellesc}
+\documentclass[12pt,crop,multi=false,]{standalone}
+\usepackage{pgfplots}
+\usepackage{chemfig}
+\usepackage{tikz}
+\usetikzlibrary{calc,positioning}
+\usepackage{amsmath,amssymb}
+\usepackage{mathtools}
+% \usepackage[sfdefault]{FiraSans}
+% \usepackage[small]{eulervm}
+\usepackage{opensans}
+\usepackage{mathpazo}
+
+\begin{document}
+
+
+%\begin{tikzpicture}[scale=1 
+%    , every node/.style={align=left, text width=10cm}
+%    ]
+%    \node (reaca) {$X$ \rightarrow $X^*$};
+%
+%    \node[below=1mm of reaca] (reacb) {
+%        $X^* + P \xrightleftharpoons{} X^*.P \rightarrow X + P$
+%    };
+%
+%\end{tikzpicture}	
+
+\begin{tabular}{l}
+    \schemestart
+    $X$ \arrow{->}[] $X^*$  
+    \schemestop\label{reac:phospho} 
+    \\
+    \schemestart
+    $X^*$ + P \arrow{<->>}  $X^*$P \arrow{->} X + P 
+    \schemestop\label{reac:depospho}
+\end{tabular}
+
+\end{document}

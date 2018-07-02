@@ -1,0 +1,23 @@
+\RequirePackage{luatex85,shellesc}
+\documentclass[crop,tikz]{standalone}
+\usepackage{pgfplots}
+\usepackage{tikz}
+\usetikzlibrary{calc,positioning}
+\usepackage{opensans}
+\usepackage{mathpazo}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=1 , every node/.style={} ]
+
+    \node (k1) {$K_1$};
+    \node[right=of k1] (k1p) {$K_1^*$};
+
+    \edef\o{2mm}
+    \draw[-latex] ([yshift=\o]k1) -- ([yshift=\o]k1p);
+    \draw[latex-] ([yshift=-\o]k1) -- ([yshift=-\o]k1p);
+    
+\end{tikzpicture}	
+
+\end{document}
+

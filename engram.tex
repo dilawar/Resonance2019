@@ -1,0 +1,55 @@
+\RequirePackage{luatex85,shellesc}
+\documentclass[crop,tikz,multi=false]{standalone}
+\usetikzlibrary{arrows,arrows.meta}
+\usepackage[sfdefault]{FiraSans}
+\usetikzlibrary{calc,fit}
+\usetikzlibrary{graphs,graphdrawing}
+\usegdlibrary{trees,force}
+\usepackage{ifthen}
+\begin{document}
+
+\pgfmathsetseed{2018}
+
+\newcommand\Graph[2]{
+    \graph[ %spring layout
+        , tree layout
+        ,  node distance=1.5cm
+        , nodes={circle,fill=red!50!yellow, inner sep=6pt,as=}
+        , edges={very thick, draw=red!50, -{Circle[black,width=3pt,length=3pt]}}
+    ]
+    {
+        1 -- {8, 9, 19};
+        6 -- {7, 11, 12};
+        9 -- {3, 6};
+        11 -- {4, 2, 1};
+        19 -- {2,7,8};
+        4 -- 12;
+        #2;
+    };
+    \node[rectangle, draw=blue!0, fit=(1) (2) (3) (4) (8) (11) (12) (19)] (#1) {};
+}
+
+% using graphdrawing library.
+\begin{tikzpicture}[scale=1, every node/.style={} ]
+
+    \begin{scope}[name=a]
+        \Graph{grapha}{}
+    \end{scope}
+
+    \begin{scope}[xshift=10cm]
+        \Graph{graphb}{
+            1 --[-{Circle[black,length=5pt,width=5pt]}] 8;
+            9 --[-{Circle[black,length=8pt,width=8pt]}] 6;
+            11 --[-{Circle[black,length=7pt,width=7pt]}] {4,2};
+        }
+    \end{scope}
+
+    \draw[-Latex,line width=1mm] ([yshift=4mm]grapha.east) to[]
+    node[above, midway]{\Large Learning}  ([yshift=4mm]graphb.west);
+    \draw[-Latex,line width=0.2mm,dotted] ([yshift=-4mm]graphb.west) to[] 
+    node[below, midway]{\Large Forgetting}  ([yshift=-4mm]grapha.east);
+    
+\end{tikzpicture}	
+
+\end{document}
+
