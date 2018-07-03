@@ -1,5 +1,5 @@
 \RequirePackage{luatex85,shellesc}
-\documentclass[crop,tikz]{standalone}
+\documentclass[14pt, crop,tikz]{standalone}
 \usepackage{pgfplots}
 \usepackage{tikz}
 \usetikzlibrary{calc,positioning}
@@ -8,14 +8,40 @@
 
 \begin{document}
 
-\begin{tikzpicture}[scale=1 , every node/.style={} ]
+\begin{tikzpicture}[scale=1 , every node/.style={inner sep=2pt} ]
 
-    \node (k1) {$K_1$};
-    \node[right=of k1] (k1p) {$K_1^*$};
+    \node (k1) {\Huge $X$};
+    \node[right=3cm of k1] (k1p) {\Huge $X^*$};
 
-    \edef\o{2mm}
-    \draw[-latex] ([yshift=\o]k1) -- ([yshift=\o]k1p);
-    \draw[latex-] ([yshift=-\o]k1) -- ([yshift=-\o]k1p);
+    \edef\o{1}
+    \draw[-latex] ([yshift=\o pt]k1.east) -- ([yshift=\o pt]k1p.west) 
+        node[midway, label={above:\tiny kinase}] (kinase) {};
+    \draw[-latex] ([yshift=-\o pt]k1p.west) -- ([yshift=-\o pt]k1.east)
+        node[midway, label={below:\tiny Phosphatase}] (phosp) {};
+
+    % Release P
+    \draw[-latex] ($(phosp)+(-0.4,0)$) to[bend right] ++(-135:5mm)
+        node[below] {\footnotesize $PO_4$};
+
+    % Consume ATP
+    \draw[-latex] ($(kinase)+(-0.4,0)$) to[bend left] ++(135:5mm)
+        node[above] {\footnotesize $ATP$};
+
+    % arrow above kinase.
+    \draw[->] ($(kinase)+(-0.3,0.4)$) to[out=-20,in=200] ($(kinase)+(0.3,0.4)$);
+
+    % Kinase autophosphorylate itself.
+    \draw[->, dashed, rounded corners, thick] (k1p.north) -- ++(0,0.5) -- ++(-2.15,0)
+        node (joina) {} 
+        -- ++(0,-0.5)
+        ;
+
+    \draw[-, dashed, thick ] ($(joina)+(0,-0.1)$) -- ++(0,0.5) node[above] (k2) {$K_2$};
+    \draw[latex-, dashed, thick] (k2) -- ++(-1,0) node[left] {\footnotesize Stimulus};
+
+    % Neuronal function.
+    \draw[->, dashed, thick] (k1p) -- ++(1.4,0) 
+        node[text width=12mm, right ] {\footnotesize {Neuronal\\ Function} };
     
 \end{tikzpicture}	
 
