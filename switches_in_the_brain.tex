@@ -29,10 +29,10 @@
 
 % Author info here
 \authorIntro{
-    % \includegraphics[width=2cm]{}\\
+    \includegraphics[width=2cm]{./dilawar.jpg}\\
     Dilawar Singh is currently a graduate student at National Center for
-    Biological Sciences (NCBS), Bengaluru. His hobby is to convince his colleagues to
-    move to open-source softwares.
+    Biological Sciences (NCBS), Bengaluru. His hobby is to convince people to
+    move to open-source softwares and live happily ever after.
 }
 
 
@@ -138,12 +138,11 @@ neural network often known as Hopefield network can do just the same as shown in
 
 \begin{figure}[!hb]
     \centering
-    \caption{Hopfield network with 100 spiking neurons. These \emph{recurrent} configurations have 
-        extremely rich dynamics and give rise to interesting brain-like
+    \caption{Hopfield network with 100 spiking neurons. These \emph{recurrent} 
+        configurations give rise to interesting brain-like
         computation. \textbf{(B)} 6 patterns (memory) i.e. NCBSXY are stored in this
         network. \textbf{(C)} When a very distorted \textit{cue} is applied to
-        the network input, its dynamics converges to one of stored pattern which
-        is \emph{closest} to any of the stored pattern.
+        the network input, it \textit{fetches} one of stored pattern \emph{closest} to applied cue.
     }\label{fig:hopfield}
     \includegraphics[width=\linewidth]{./hopfield.pdf}
 \end{figure}
@@ -330,25 +329,28 @@ another holoenzymes. If the gainer holoenzyme was inactive, this holoenzyme
 becomes partially active. This process is called subunit-exchange and
 \gls{camkii} can spread its activation via it (\Fig{fig:camkii_summary}).
 
-\begin{figure}[b!]
+In our computational study of this pathway, we showed that subunit-exchange
+improves information retention capacity of \gls{camkii}. We also showed that
+distributed clusters of \gls{camkii} can form very stable bistable switches. And
+it also operate as integrator which is often observed in experiments. In short,
+we showed the subunit-exchange makes \gls{camkii} molecule better at retaining
+information and it is likely that \gls{camkii} forms bistable switch. To prove
+it, one needs to observe single molecule activity in synapse at special
+micro-domain called \gls{psd} which is a very challenging with current
+technology.
+
+\begin{figure}[h!]
     \caption{ \textbf{(A)} Graphical representation of \gls{camkii} signalling
         pathway. \textbf{(B)} This pathway shows bistable behaviour when synapse
         is receiving background activity. One trajectory is shown for system with 
         15 molecules. \textbf{(C)} Stability of synapse increases exponentially
-        with number of \gls{camkii} molecules.
+        with number of \gls{camkii} molecules. With $\sim 60$ molecules, switch
+        remain stable for roughly $150$ years.
     }\label{fig:camkii_summary}
     \centering
     \includegraphics[width=\linewidth]{./resonance_camkii.pdf}
 \end{figure}
 
-In our computational study of this pathway, we show that subunit-exchange
-improves information retention capacity of \gls{camkii}. We also show that
-distributed clusters of \gls{camkii} can form very stable bistable switches; and
-can also operate as integrator which is often observed in experiments. In short,
-we shows the subunit-exchange makes \gls{camkii} molecule better at retaining
-information and it is likely that \gls{camkii} forms bistable switch. To prove
-it, one needs to observe single molecule activity in synapse near the membrane
-which is very challenging with current technology.
 
 % References section
 \section{Conclusion}
@@ -359,14 +361,24 @@ computational studies. To really prove it, we need experimental data supporting
 this hypothesis. There is growing experimental evidence that synapse change in
 \textit{all-or-none} manner, a finding consistent with this idea. Some studies
 claims the changes are graded i.e. synapse changes in step-wise manner much like
-a \textbf{multistable} synapse. A multistable synapse is a ensemble of many
-bistable components. Whether \gls{camkii} is bistable in synapse (or in some
-special confined part of it) is still an open question. So far there is no
-concrete evidence that it is. There could be other still unknown mechanisms which can
+a \textbf{multistable} synapse. A multistable synapse is an ensemble of many
+bistables. Whether \gls{camkii} is bistable in synapse (or in some special
+confined part of it) is still an open question. So far there is no concrete
+evidence that it is. There could be other still unknown mechanisms which can
 give rise to bistability. Given that bistable motif is a widespread theme in
 biology, it is reasonable to believe that there are indeed switches in our brain
--- much like flip-flops in digital memory -- which keeps our memories safe from
-the onslaught of time and noise.
+-- much like flip-flops in your pen-drives and memory cards -- evolved to keep
+our memories safe from the onslaught of time and noise.
+
+\correspond{
+    Bhalla Lab,
+    National Center for Biological Sciences, Bengaluru \\
+    GKVK Campus, Bellary Road \\
+    Bengaluru - 560065.  \\
+    Email: dilawars@ncbs.res.in
+}
+
+\section*{Acknowledgements}
 
 \begin{thebibliography}{99} 
     \bibitem{lisman1985} 
@@ -389,7 +401,6 @@ the onslaught of time and noise.
     Eugene Wigner,
     \textit{The Unreasonable Effectiveness of Mathematics in the Natural Sciences},
      Communications in Pure and Applied Mathematics, vol. 13, No. I (February 1960)
-
 
 \end{thebibliography}
 
