@@ -52,7 +52,7 @@ def main( plot = True ):
             ax = plt.subplot( nRows, maxCols, i+1)
             ax.imshow( a )
             ax.axis('off')
-            save_letter( a, '%s.csv' % k )
+            save_letter( a, '%s.txt' % k )
     
     # store the patterns
     hopfield_net.store_patterns(pattern_list)
@@ -81,7 +81,7 @@ def main( plot = True ):
         for i, pat in enumerate( states_as_patterns ):
             overlap_list = pattern_tools.compute_overlap_list(pat, pattern_list)
             ax = plt.subplot( nRows, maxCols, maxCols+i+1 )
-            save_letter( pat, '%s%s.txt' % (l, i) )
+            save_letter( pat, '%s.txt' % i )
             ax.imshow( pat )
             ax.axis('off')
             ax1 = plt.subplot( nRows, maxCols, 2*maxCols+i+1)
