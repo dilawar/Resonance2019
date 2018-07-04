@@ -81,7 +81,7 @@ def main( plot = True ):
         for i, pat in enumerate( states_as_patterns ):
             overlap_list = pattern_tools.compute_overlap_list(pat, pattern_list)
             ax = plt.subplot( nRows, maxCols, maxCols+i+1 )
-            save_letter( pat, '%s.txt' % i )
+            save_letter( pat, '%s%s.txt' % (l, i) )
             ax.imshow( pat )
             ax.axis('off')
             ax1 = plt.subplot( nRows, maxCols, 2*maxCols+i+1)
