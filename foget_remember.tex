@@ -1,0 +1,28 @@
+\RequirePackage{luatex85,shellesc}
+\documentclass[crop,tikz]{standalone}
+\usepackage{pgfplots}
+\usepackage{libertine}
+\begin{document}
+\begin{tikzpicture}[scale=1]
+    \begin{axis}[ 
+        , width = 3cm , height=2cm, scale only axis
+        , axis lines*=left
+        , legend style={at={(0,1)}, anchor=south west, draw=none
+            , font=\footnotesize, fill=none
+        }
+        , xtick = {0.25, .75}
+        , xticklabels = {$\leftarrow$ rigid, plastic $\rightarrow$}
+        , ytick = \empty
+        ]
+        \addplot [very thick, color=blue] gnuplot [ raw gnuplot ] {
+            f(x)=5*x^2;
+            plot [x=0.1:0.99] f(x);
+        };
+        \addplot [very thick, color=red] gnuplot [ raw gnuplot ] {
+            g(x)= 10*exp(-5*x);
+            plot [x=0.1:0.99] g(x);
+        };
+        \legend{Learning, Remembering};
+    \end{axis}
+\end{tikzpicture}
+\end{document}

@@ -91,32 +91,8 @@ ability to change its connections. And here is the first challenge!
 
 \subsection{Learning quickly v/s forgetting slowly, a zero-sum game}\label{subsec:zero_sum} 
 \leftHighlight{
-\begin{tikzpicture}[scale=1]
-    \begin{axis}[ 
-        , width = 3cm , height=2cm, scale only axis
-        , axis lines*=left
-        , legend style={at={(0,1)}, anchor=south west, draw=none
-            , font=\footnotesize, fill=none
-        }
-        , xtick = {0.25, .75}
-        , xticklabels = {$\leftarrow$ rigid, plastic $\rightarrow$}
-        , ytick = \empty
-        ]
-        \addplot [very thick, color=blue] gnuplot [ raw gnuplot ] {
-            f(x)=5*x^2;
-            plot [x=0.1:0.99] f(x);
-        };
-        \addplot [very thick, color=red] gnuplot [ raw gnuplot ] {
-            g(x)= 10*exp(-5*x);
-            plot [x=0.1:0.99] g(x);
-        };
-        \legend{Learning, Remembering};
-    \end{axis}
-    \node[text width=40mm, anchor=north west, yshift=-5mm, xshift=-5mm
-        ] at (rel axis cs:0,0) (caption) {
-            Ability to change (plasticity) is good for learning, but bad for remembering.
-        };
-\end{tikzpicture}
+    \includegraphics[]{./foget_remember.pdf}
+    Ability to change (plasticity) is good for learning, but bad for remembering.
 }
 
 For $M_\text{Lalu}$ (or any other memory) to remain intact, each of its
