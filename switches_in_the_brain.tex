@@ -41,8 +41,8 @@
     We forget often. But we remember some memories as long as we live.
     This means that our brain is capable of protecting memories for years.
     This is a remarkable feat given that the \emph{biochemical hardware}
-    involved in forming biological memories is an extremely hostile place for
-    its storage.  What are the challenges involved? And what kind of 
+    involved in creating new memories is a hostile place for
+    its storage.  What are the challenges involved? And what type of 
     biochemical mechanisms may overcome them? This article explores a major
     hypothesis that molecular switches may be behind our remarkable ability to
     remember for a lifetime.
@@ -57,24 +57,23 @@
 
 Our brain is made up of roughly 100 billion neurons, joined together with over
 100 trillion connections called \textbf{synpase}s. Each neuron on average makes
-1000 connections.  \leftHighlight{Each neuron, on average, receives roughly 1000
-connections from other neurons.}It is now widely accepted that memories are
-created by processes in the brain changing these connections. 
+1000 connections. It is now widely accepted that memories are created by
+changing these connections. 
 
-Lets label these synapses as $s_1, s_2, \ldots s_n$. A subset of these synapse
-can participate in a memory formation, for example, my memory of being chased by
-a ferocious street dog named \emph{Lalu} (lets call it $M_\text{Lalu}$) is
-represented by the set of the synapses $M_\text{Lalu}=(s_{10}, s_{21},
-s_{12},\ldots,s_{331})$ i.e. these connections were changed during my troubling
-encounter with Lalu. I sometimes recall this memory whenever I see a similar
-looking dog. 
+Let's label these synapses as $s_1, s_2, \ldots s_n$. A subset of these synapses
+participate in a specific memory formation. For example, my memory of being
+chased by a ferocious street dog named \emph{Lalu} (lets call it
+$M_\text{Lalu}$) is represented by the set of the synapses
+$M_\text{Lalu}=(s_{10}, s_{21}, s_{12},\ldots,s_{331})$ i.e. these connections
+were changed during my troubling encounter with Lalu. I sometimes recall this
+memory whenever I see a similar looking dog. 
 
-The ability to learn quickly from an experience and to recall it has obvious
-advantages. Learning is a form of memory (and so is confidence). We are going to
-use these terms interchangeably. The ability to remember and recall painful
-encounters with predators helps all animals in avoiding them.  The ability to
-remember the location or cue of food, water and mates, seasonal events for
-migration or reproduction are just a few other examples of usefulness of memory. 
+%% The ability to learn quickly from an experience and to recall it has obvious
+%% advantages. Learning is a form of memory (and so is confidence). We are going to
+%% use these terms interchangeably. The ability to remember and recall painful
+%% encounters with predators helps all animals in avoiding them.  The ability to
+%% remember the location or cue of food, water and mates, seasonal events for
+%% migration or reproduction are just a few other examples of usefulness of memory. 
 
 \begin{figure}[!t] 
     \caption{Memory formation and forgetting. During formation of
@@ -87,10 +86,38 @@ migration or reproduction are just a few other examples of usefulness of memory.
 I can recall an experience as long as the set of synapses in which the
 particular experience was stored remains \emph{intact}. Therefore our
 ability to remember is contingent on our brain's ability to keep its connections
-intact.  And on the other hand, our ability to learn is depends on our brain's
+intact.  But on the other hand, our ability to learn is depends on our brain's
 ability to change its connections. And here is the first challenge!
 
 \subsection{Learning quickly v/s forgetting slowly, a zero-sum game}\label{subsec:zero_sum} 
+\leftHighlight{
+\begin{tikzpicture}[scale=1]
+    \begin{axis}[ 
+        , width = 3cm , height=2cm, scale only axis
+        , axis lines*=left
+        , legend style={at={(0,1)}, anchor=south west, draw=none
+            , font=\footnotesize, fill=none
+        }
+        , xtick = {0.25, .75}
+        , xticklabels = {$\leftarrow$ rigid, plastic $\rightarrow$}
+        , ytick = \empty
+        ]
+        \addplot [very thick, color=blue] gnuplot [ raw gnuplot ] {
+            f(x)=5*x^2;
+            plot [x=0.1:0.99] f(x);
+        };
+        \addplot [very thick, color=red] gnuplot [ raw gnuplot ] {
+            g(x)= 10*exp(-5*x);
+            plot [x=0.1:0.99] g(x);
+        };
+        \legend{Learning, Remembering};
+    \end{axis}
+    \node[text width=40mm, anchor=north west, yshift=-5mm, xshift=-5mm
+        ] at (rel axis cs:0,0) (caption) {
+            Ability to change (plasticity) is good for learning, but bad for remembering.
+        };
+\end{tikzpicture}
+}
 
 For $M_\text{Lalu}$ (or any other memory) to remain intact, each of its
 component ($s_{10}, s_{21}, s_{12} \ldots$) should also remain intact.  The
@@ -104,13 +131,11 @@ which is easily changeable (i.e. a plastic synaspe), it will be good at learning
 new experiences but won't be able to retain it for long. Plastic synapse forgets
 easily.  We know that not only we remember for long time, we are capable of
 learning quickly too. For example, honey bees can learn the location of food
-after one encounter with flowers. \leftHighlight{Ability to change is good for
-learning, but bad for remembering} Indeed a good memory system is the one which
+after one encounter with flowers.  Indeed a good memory system is the one which
 learns quickly from new experiences and forgets old information as slowly as
 possible.  Forgetting and remembering are the two sides of the same coin.  They
 are conflicting demands -- a zero-sum game.  The challenge is to strike a
 balance. 
-
 
 % Hopefield network 
 \section{Hopfield network -- associative memory network}\label{sec:hopfield}
@@ -127,15 +152,17 @@ balance.
 % \hfill -- L F Abbott
 % \end{quote}
 
-Before we continue further, lets familiarize ourselves with one very popular
-network which is made up of neuron like elements. In this network, patterns can
-be stored and recalled. Memory storage and retrieval is trivially done by a
-computer. It will be helpful to compare memory storage in the computer and the
-brain. In the computer, we always know the address of every stored memory and we
-access it by providing this address. The file icon on your desktop is a
-graphical way of encoding this addressing scheme. This process is very similar
-to looking up the index page in a reference book to find a chapter. Our brain,
-on the other hand, is very unlikely to have such an indexing mechanism. 
+% Before we continue further, lets familiarize ourselves with one very popular
+% network which is made up of neuron like elements. In this network, patterns can
+% be stored and recalled.
+
+Memory storage and retrieval is trivially done by a computer. It will be helpful
+to compare memory storage in the computer and the brain. In the computer, we
+always know the address of every stored memory and we access it by providing
+this address. The file icon on your desktop is a graphical way of encoding this
+addressing scheme. This process is very similar to looking up the index page in
+a reference book to find a chapter. Our brain, on the other hand, is very
+unlikely to have such an indexing mechanism. 
 
 We recall when we are provided with \textit{cues}. For example, when you see
 some part of of a familiar person in a wedding album -- while the rest of the
@@ -160,7 +187,7 @@ How does this recurrent network work is beyond the scope of article. Readers are
 encouraged to explore more by themselves. \emph{``How well we can explain biological
 memory by these network''} is an active research area.  Though these networks are
 extremely successful in accomplishing various \textit{brain-like} computation
-(a. la. machine learning), we would like to advise the reader to be sceptical by
+(\textit{a la} machine learning), I would like to advise the reader to be sceptical by
 noting the following:
 
 \begin{itemize}
@@ -169,7 +196,7 @@ noting the following:
         capture the essential \textit{all-or-none} (electrical spike) way of
         communication and learning by changing synaptic connections, they do
         ignore rich local computations which can be accomplished by branches of
-        these neurons (called \textit{dendrites}).
+        these neurons called \textit{dendrites}.
     \item  There is no strong evidence that neurons make such dense recurrent
         connections. However some studies have shown that Hopfield network can
         work with very sparse recurrent connections as well. 
@@ -181,17 +208,19 @@ noting the following:
 comparison and contrast and often provide very useful insight. But in the end, these
 solutions must be tested under the constraints imposed by biology.}
 
-These network provide us with a framework to concretely think about the problem
-of memory storage and its recall. We learn a great deal about these problem by
-pointing out the limitations and failure of these models. Hopfield network has
-properties which will sound very natural to us. Can you store as many memories
-as you like in these networks? No. There is an upper limit. Adding more patterns
-over maximum limit causes distortion in memories. When a cue is given, the
-network no longer fetch the right pattern. It often fetches a pattern which was
-not even stored; the retrieved pattern instead resemble some mixture of many
-stored patterns. When too many memories are stored, they corrupt each other by
-mixing up. If connections are allowed to decay in these networks, memories
-starts disappearing with the weakest memory disappearing first.
+Nonetheless, these network provide us with a framework to concretely think about
+the problem of memory storage and its recall. We learn a great deal about these
+problem by pointing out the limitations and failure of these models. Hopfield
+network has properties which will sound very natural to us. Can you store as
+many memories as you like in these networks? No. There is an upper limit. Adding
+more patterns over maximum limit causes distortion in memories. When a cue is
+given, the network no longer fetch the right pattern. It often fetches a pattern
+which was not even stored; the retrieved pattern instead resemble some mixture
+of many stored patterns. When too many memories are stored, they corrupt each
+other by mixing up. One can ask more questions. What if connections are allowed 
+to decay in these networks, and when memories starts disappearing, do the
+weakest memory disappearing first or the newest? When a new memory is added,
+what do happen to the old memories?
 
 After this necessary detour, lets go back to the main theme: how do synapses
 maintain their state?
@@ -206,7 +235,7 @@ tightly correlated with a chemical species $X$ found at synapse i.e. $w$ changes
 with $X$.  The problem of maintenance of $w$ can be rephrased as the problem of
 maintenance of the level -- or the activity -- of $X$. Therefore, the problem of
 ``\emph{synapse maintaining its state}'' becomes the problem of ``molecule
-\emph{$X$ maintaining its state}'', a more concretely defined problem.
+\emph{$X$ maintaining its state}'' -- a more concretely defined problem.
 
 \begin{figure}[h!]
     \caption{Phosphorylation and deposphorylation of X. P is phosphatase.}\label{fig:model}
@@ -223,8 +252,8 @@ memory formation, how do we make sure that $X^*$ does not turn back into $X$
 (lose memory)?
 
 \rightHighlight{Can you think of other set of hypotheses? It must conform to laws of chemistry!}
-Lets mull over a solution to this problem of long term maintenance of $X^*$.
-Lets propose that somehow following are true. 
+Let's mull over a solution to this problem of long term maintenance of $X^*$.
+Let's assume that somehow followings are true. 
 \begin{enumerate}
     \item \textbf{(Amplification)} $X^*$ \textbf{auto-phosphorylate} itself i.e. \tikz[baseline]{ 
             \node (x) {$X$};
@@ -238,12 +267,11 @@ Lets propose that somehow following are true.
         $P$ or reducing the reaction rate.
 \end{enumerate} 
 
-Both (1) and (2) helps in making $X^*$ highly stable. Problem solved? No.  Now we
-have constructed a very rigid synapse. Recall the \textit{rigid} v/s
+Both (1) and (2) help in making $X^*$ highly stable. Problem solved? No.  Now
+we have constructed a rigid synapse. Recall the \textit{rigid} v/s
 \textit{pastic} synpase dilemma discussed previously (section
-\ref{subsec:zero_sum}).
-This synapse will definitely remember for longer long but it will be almost
-impossible for this synapse to participate in any new learning.
+\ref{subsec:zero_sum}). This synapse will definitely remember for longer
+but it will not participate in any new learning anymore.
 
 As long as we are in the realm of theory, let's propose a solution to this
 problem . We add another reaction say $P'+X^*\rightarrow P'X \rightarrow P'+X$
@@ -382,15 +410,21 @@ much like a \textbf{multi-stable} synapse. A multi-stable synapse is an ensemble
 of many bistable components. Whether \gls{camkii} is bistable in synapse (or in
 some part of it) is still an open question. So far there is no concrete evidence
 that it is. There could be other still unknown mechanisms which can give rise to
-bistability. Given that bistable chemical motifs are widespread in cells, it is
+bistability. Given that bistable chemical motifs are widespread, it is
 reasonable to believe that there are indeed switches in our brain -- much like
-flip-flops in your pen-drives and memory cards -- evolved to keep our memories
-safe from the onslaught of time and noise.
+flip-flops in your pen-drives and memory cards -- which are evolved to keep our
+memories safe from the onslaught of time and noise.
 
 \section*{Acknowledgements}
 I'd like to thank Somya Mani for helpful suggestions on the manuscript.
 
-
+\correspond{
+    Bhalla Lab,
+    National Center for Biological Sciences, Bengaluru \\
+    GKVK Campus, Bellary Road \\
+    Bengaluru - 560065.  \\
+    Email: dilawars@ncbs.res.in
+}
 \begin{thebibliography}{99} 
     \bibitem{lisman1985} 
     Lisman J. E., 
@@ -414,12 +448,4 @@ I'd like to thank Somya Mani for helpful suggestions on the manuscript.
      Communications in Pure and Applied Mathematics, vol. 13, No. I (February 1960)
 
 \end{thebibliography}
-\correspond{
-    Bhalla Lab,
-    National Center for Biological Sciences, Bengaluru \\
-    GKVK Campus, Bellary Road \\
-    Bengaluru - 560065.  \\
-    Email: dilawars@ncbs.res.in
-}
-
 \end{document}
