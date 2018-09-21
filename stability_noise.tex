@@ -1,25 +1,110 @@
 \RequirePackage{luatex85,shellesc}
-\documentclass[crop,tikz]{standalone}
+% \documentclass[multi=false, varwidth=13.5cm]{standalone}
+\documentclass[multi=false]{standalone}
 \usepackage{pgfplots}
-\usetikzlibrary{patterns, intersections, calc}
-\begin{document}
+\usepgfplotslibrary{units}
+\usepackage{tabularx}
 
-\newcommand\TableWithBeaker[3]{
-    \begin{scope}
-        \coordinate (left) at ($#1-(#2/2,0)$);
-        \path[top color=black, draw=none]  (left) rectangle ($#1+(#2/2,-0.2)$);
-        \draw[very thick, red] (left) -- ($#1+(#2/2-0.1,0)$) -- ++(0,#3);
-        \draw[very thick, red] (left) -- ++(0,#3);
-    \end{scope}
+\usepackage[sfdefault]{FiraSans}
+
+\usetikzlibrary{patterns, intersections, calc, hobby}
+\usetikzlibrary{positioning,calc,shapes}
+
+\pgfplotsset{
+    , xtick align=center
+    , ytick align=center
+    , unit markings=parenthesis
+    , legend style={fill=none,draw=none,font=\footnotesize}
+    , axis lines=left
 }
 
-\begin{tikzpicture}[scale=1 , every node/.style={} ]
-    % draw vibrating table.
-    \draw[very thin] (-5,-5) grid (5,5);
 
-    \TableWithBeaker{(0,0)}{4}{2};
-    
+\begin{document}
+
+\edef\H{0.8}                                             
+\edef\L{0.1}                                            
+\edef\M{0.5}                                            
+
+\begin{tabularx}{13.5cm}{p{5cm} p{2cm} p{3.5cm}}
+    \textbf{A}
+
+\begin{tikzpicture}[scale=1 , every node/.style={inner sep=1pt} ]
+\begin{axis}[ xlabel=x,ylabel=E
+        , enlargelimits=true
+        , xtick=\empty , ytick=\empty
+        , height=4cm, width=6cm 
+        , ymin = 0
+        , ylabel near ticks
+        , xlabel near ticks
+    ]
+
+    %%% Use Hobby; NOTE: Don't. Looks like a human butt.
+    %\addplot [color=black, smooth, very thick, hobby
+    %    ] coordinates  {(0,\H) (0.1,0.5*\H) (0.25,\L) (0.5,\M) (0.75,\L) (0.9,.5*\H) (1,\H)
+    %};
+
+    \addplot+ [no marks, smooth, very thick, 
+        ] coordinates  {(0,\H) (0.1,0.5*\H) (0.25,\L) (0.5,\M) (0.75,\L) (0.9,.5*\H) (1,\H)
+    };
+
+    \node[draw,circle, ball color=blue, shading=ball, anchor=south,
+        , inner sep=3pt
+        % , label=\footnotesize Unstable
+        ] (unstable) at (axis cs:0.5,\M) {};
+
+    \node[above=0mm of unstable] {$\leftrightarrow$};
+
+    \node[draw,circle %, ball color=red, shading=ball
+        , dashed, anchor=south, label=below:\footnotesize stable] 
+        (stableA) at (axis cs:0.25,\L) {\footnotesize A};
+
+    \node[draw,circle %, ball color=red, shading=ball
+        , dashed, anchor=south, label=below:\footnotesize stable] 
+        (stableB) at (axis cs:0.75,\L) {\footnotesize B};
+
+\end{axis}
+\end{tikzpicture}
+&
+\textbf{B}
+
+\begin{tikzpicture}[scale=1 , every node/.style={} ]
+    \node[fill=blue!50, circle] (a) {A};
+    \node[below right=1.25cm of a, fill=blue!50, circle] (b) {B};
+
+    \draw[-latex, dashed] (a) to[bend right] (b);
+    \draw[-latex, dashed] (b) to[bend right] (a);
+
+    \draw[-latex, very thick] (a) to[loop above] (a);
+    \draw[-latex, very thick] (b) to[loop below] (b);
 \end{tikzpicture}	
+& 
+\textbf{C}
+
+\begin{tikzpicture}[scale=1]
+    \begin{axis}[ name=a,
+            xlabel=Time, x unit=au
+            , width=5cm, height=3cm 
+            , ytick={0.1,0.9}
+            , yticklabels={A,B}
+            , enlargelimits = true
+        ]
+        \addplot [color=blue, thick] gnuplot [ raw gnuplot ] {
+            set datafile separator ',';
+            plot "./bistable/data.csv" using "steps":"state";
+        };
+    \end{axis}
+    %%\begin{axis}[rotate=-90 
+    %%        , name=b,
+    %%        , at={(a.south east)}
+    %%        , width=3cm, height=2cm
+    %%        , xtick=\empty
+    %%    ]
+    %%    \addplot [color=blue, thick, hist={bins=100,density}] 
+    %%        table[col sep=comma]{./bistable/data.csv};
+    %%\end{axis}
+\end{tikzpicture}
+
+\end{tabularx}
 
 \end{document}
 
