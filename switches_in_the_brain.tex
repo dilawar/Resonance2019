@@ -333,28 +333,32 @@ extensively studied using computational models for over two decades
 vitro} conditions. 
 
 % Bistable box
-\boxTexteven{Bistability in reaction networks} {
+\boxTexteven{Bistability in reaction network} {
+
     In this world full of fluctuations, stability is indeed very useful
-    property. A bistable system -- as its name implies -- has two stable 
-    states i.e. if you obverse this system for very long time, almost always 
-    you would find it in in either of these two stable states. Just like an electrical switch
-    which you would almost always find it in either \texttt{ON} or \texttt{OFF}
-    state.
+    property. Life which is remarkably stable is made up of inherently noisy
+    molecules. Bistable chemical reaction network is the commonest motif in
+    biology where high stability arise out of inherently noisy components.
+
+    A bistable system -- as its name implies -- has two stable states. From the
+    point of view of experimentalist, if you obverse a bistable system for very
+    long time, you would almost always find it in either of its two stable
+    states. Just like an electrical switch which you would almost always find in
+    either \texttt{ON} or \texttt{OFF} state.
 
     \vspace{3mm} \includegraphics[width=\linewidth]{./stability_noise.pdf} In
-    the figure above, \textbf{A} shows an example of bistable system.  There
-    are two stable states A and B. If we put a ball in this system and shake it
-    a bit, the ball will almost always be found in either well state A or B. In \textbf{B}, 
-    we show state transition diagram of a typical stochastic bistable system
-    where the arrow depicts the probability of transition from one state to
-    another. In \textbf{C}, we simulate the system
-    described in \textbf{B} with probability of transition from A to B, and from B to
-    A set to be 0.01. 
+    the figure above, \textbf{A} shows an example of deterministic bistable
+    system; its stable states are labelled A and B. Any particle released in
+    this system will always end up in either A or B. In \textbf{B}, we show
+    state transition diagram of a stochastic bistable system.  The transition
+    arrow depicts the probability of transition from one state to another. In
+    \textbf{C}, we simulate the system described in \textbf{B} with probability
+    of transition from A to B, and from B to A set to be 0.01.
 
-    In biology, bistable motif are commonplace especially found in situations
-    where cell has to make a decision such as  cell division where cell has to 
-    decide if to go to next state or not, and during cellular differentiation
-    when cell has to decide among possible fates\cite{wilhelm}.
+    Such stochastic bistable motif are commonplace in biology, especially found
+    in situations where cell has to make a decision such as cell division where
+    cell has to decide if to go to next state or not, and during cellular
+    differentiation when cell has to decide among possible fates.
 
     \paragraph{Bistable reaction networks} What essential features should a chemical
     system have to exhibit bistability? There are three necessary conditions:
