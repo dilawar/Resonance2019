@@ -2,14 +2,18 @@
 \documentclass[]{resonance}
 \usepackage{pgf,tikz}
 \usepackage{tikzsymbols}
+\usepackage[breakable]{tcolorbox}
 \usepackage{nameref}
 \usepackage{pgfplots}
 \usepackage{grffile}
 \usepackage{amsmath}
+\usepackage{lipsum}  % remove after testing.
 \usepackage{mathtools}
+\usepackage{wrapfig}
 \usepackage{chemfig}
 \usepackage{siunitx}
 \usepackage{todonotes}
+\usepackage{tabularx} 
 \usepackage{amssymb}
 \usetikzlibrary{shapes,backgrounds,calc,arrows,arrows.meta}
 
@@ -302,7 +306,6 @@ significant force is applied. These are called \textbf{bistable switch}es.
 }\label{fig:model_bistable}
 \end{figure}
 
-
 Is there any  proof that bistable systems are even possible? Do they occur at
 all in living cells?  Bistability (and its close relative oscillations) are very
 common in biology; from cellular level to population levels. So if it won't be
@@ -329,27 +332,72 @@ extensively studied using computational models for over two decades
 \cite{sandstorm}. There is evidence that \gls{camkii} is bistable \emph{in
 vitro} conditions. 
 
-\gls{camkii} is known to  play an important role in memory formation.  In
-experiments involving mice, deactivating \gls{camkii} in any way has always
-resulted in impairment of memory formation and learning. \gls{camkii} molecule
-also has many interesting properties which makes it an attractive candidate for
-storing memory. 12 to 14 subunits of \gls{camkii} make up one molecules, usually
-arranged in dodecameric (top view \tikz{  \foreach \i in {1,2,...,6} {
-        \node[circle, fill=blue!50, shift=(60*\i:1mm),inner sep=1pt] (b\i) at (0,0) {};
-        } }) or tetradecameric form (top view \tikz{  \foreach \i in {1,2,...,7} {
-        \node[circle, fill=blue!50, shift=(360*\i/7:1mm),inner sep=1pt] (b\i) at (0,0) {};
-} }) . Activation of its first subunit is very slow. Once
-a subunit has been activated, it catalyses activation of its neighbours i.e.
-\gls{camkii} auto-phosphorylates itself. Moreover fully active \gls{camkii}
-holoenzyme can loose an \textit{ACTIVE} subunit which can be picked up by
-another holoenzyme. This process is called subunit-exchange and this is a way by
-which \gls{camkii} spreads its activation (\Fig{fig:camkii_summary}).
+%\begin{tcolorbox}[
+%    title = \bfseries \centering Box \newboxText. \gls{camkii}: A brief overview of its properties and function
+%    , breakable
+%    % , grow to left by=4cm
+%    , text width=13.5cm
+%    % , height = \pageheight
+%    ]
+% CaMKII box.
+\boxTextodd{\gls{camkii}: A brief overview of its properties and function} {
+Among more than 2000 proteins found in brain, \gls{camkii} constitutes
+roughly 2\% of all. Furthermore, it is enriched in Hippocampus -- a brain
+structure essential for memory formation. Indeed, \gls{camkii} is known to
+play essential role in memory formation.  In experiments involving mice,
+deactivating \gls{camkii} in any way has always resulted in impairment of
+memory formation and learning. 
 
-\leftHighlight{
-    \includegraphics[width=1.2cm]{./camkii_pdb.png}
-    Top view of dodecameric \gls{camkii} (12 subunits). From Protein Data
-    Bank (https://www.rcbs.org).
-}
+\gls{camkii} molecule has many interesting properties which makes it an
+attractive candidate for storing memory. 12 to 14 subunits of \gls{camkii} make
+up one holoenzyme, usually arranged in dodecameric (top view \tikz{  \foreach \i
+in {1,2,...,6} { \node[circle, fill=blue!50, shift=(60*\i:1mm),inner
+sep=1pt] (b\i) at (0,0) {}; } }) or tetradecameric form (top view \tikz{
+\foreach \i in {1,2,...,7} { \node[circle, fill=blue!50,
+shift=(360*\i/7:1mm),inner sep=1pt] (b\i) at (0,0) {}; } }). \gls{camkii}
+structure is shown in (\textbf{A}) below (from Protein Data Bank
+(https://www.rcbs.org)).
+
+\vspace{5mm}
+\begin{tabularx}{\linewidth}{p{3cm} X}
+\textbf{A}
+
+\includegraphics[height=2cm]{./camkii_pdb.png}
+&
+\textbf{B} 
+
+\includegraphics[width=9cm]{./camkii_subunit_exchage.pdf}
+\\
+\textbf{C} 
+
+\includegraphics[width=8cm]{./camkii_pp1_switch_level1_detail.pdf}
+\end{tabularx}
+
+In \textbf{(B)}, we show subunit-exchange between two holoenzymes i.e. a fully
+active \gls{camkii} holoenzyme can loose an \textit{ACTIVE} subunit which can be
+picked up by another holoenzyme and it becomes partially active. In
+\textbf{(C)}, we summarise the activation pathway of \gls{camkii}. Upon its
+influx into synapse, \gls{ca} binds to \gls{cam} and create a complex
+\gls{cacam}. \gls{cacam} binds to \gls{camkii} and phosphorylate it. Note that
+first step involving activation of its first subunit is very slow for it
+requires binding of two \gls{cacam} simultaneously. Once a subunit has been
+activated, it helps in activation of its neighbours (only one \gls{cacam} is
+required now and therefore further phosphorylation proceeds at much faster
+rate). 
+
+Note that the first very slow step of \gls{camkii} phosphorylation can be
+overcome by subunit-exchange. If an inactive holoenzyme has picked up an active
+subunit via subunit-exchange, it does not require simultaneous binding of two
+\gls{cacam} molecules. Therefore subunit exchange helps in spreading
+\gls{camkii} activation. It is interesting to note that via subunit exchange,
+\gls{camkii} can act at distance even when it is anchored in one place.  
+
+\paragraph{Integration of \gls{ca} signal} A single \gls{camkii} holoenzyme acts
+as a leaky integrator of \gls{ca} activity i.e. it sums up \gls{ca} activity in
+time and also decays with a time-constant. Effectively it is similar to a leaky
+capacitor (\gls{ca} activity is applied current).
+} % box ends here.
+% \end{tcolorbox}
 
 In our computational study of this pathway, we show that subunit-exchange
 improves information retention capacity of \gls{camkii}. We also show that
