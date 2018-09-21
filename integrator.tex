@@ -1,0 +1,57 @@
+\RequirePackage{luatex85,shellesc}
+\documentclass[crop,tikz]{standalone}
+
+\usepackage{tikz,pgfplots,pgfplotstable}
+\usepackage[sfdefault]{FiraSans}
+\usepackage{eulervm}
+
+\pgfplotsset{compat=newest}
+\usepackage{pgfplots}
+\usepgfplotslibrary{units}
+
+\begin{document}
+
+\pgfplotsset{
+    , xtick align=center
+    , ytick align=center
+    , unit markings=parenthesis
+    , legend style={fill=none,draw=none,font=\footnotesize}
+}
+
+\def\Widht{80mm}
+\def\Height{45mm}
+
+\begin{tikzpicture}[scale=1]
+    \begin{axis}[ xlabel=Time, x unit=au
+        % , ylabel=Ca\textsuperscript{++}
+        , ylabel = Normalized Activity
+        , y unit = au
+        , enlargelimits=true
+        , axis lines=left
+        , ylabel near ticks, yticklabel pos=left
+        , width=\Widht, height=\Height
+        , legend style={at={(1,1)}, anchor=south east}
+        , legend columns=2
+    ]
+    \addplot [color=black] gnuplot [ raw gnuplot ] {
+        set datafile sep ",";
+        plot "./integrator/data.csv" using "Time":"calcium" with lines;
+    };
+    \addplot+ [no marks, very thick] gnuplot [ raw gnuplot ] {
+        set datafile sep ",";
+        plot "./integrator/data.csv" using "Time":"CaMKII0" with lines;
+    };
+    \addplot+ [no marks, very thick] gnuplot [ raw gnuplot ] {
+        set datafile sep ",";
+        plot "./integrator/data.csv" using "Time":"CaMKII1" with lines;
+    };
+    \addplot+ [no marks, very thick] gnuplot [ raw gnuplot ] {
+        set datafile sep ",";
+        plot "./integrator/data.csv" using "Time":"CaMKII2" with lines;
+    };
+    \legend{Calcium, Integrator, Leaky Integrator, Very Leaky Integrator}
+    \end{axis}
+\end{tikzpicture}
+
+
+\end{document}

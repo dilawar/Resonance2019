@@ -18,15 +18,18 @@ import numpy as np
 import pandas as pd
 
 def get_ca( t ):
-    ca = 100e-6
+    ca = 0.01
+    if t > 15:
+        return ca
     if t % 2 > 1:
-        ca = 100e-3 * (1 +  0.3 * random.gauss(0, 0.5))
+        ca = 1 * (1 +  0.3 * random.gauss(0, 0.5))
     return ca
 
 def leaky_integrate( xs, dt, tau ):
     val = [0.0]
+    factor = 1e-3
     for x in xs:
-        v = val[-1] + x
+        v = val[-1] + factor * x
         v -= v / tau    # decay
         val.append(v)
     return val[1:]
@@ -36,13 +39,13 @@ def main():
     tvec = []
     ca = []
     df = pd.DataFrame()
-    for t in np.arange( 0, 10.0, dt ):
+    for t in np.arange( 0, 20.0, dt ):
         tvec.append(t )
         ca.append( get_ca( t ) )
 
     camkii0 = leaky_integrate( ca, dt, 1e9 )
     camkii1 = leaky_integrate( ca, dt, 1e3 )
-    camkii2 = leaky_integrate( ca, dt, 1e2 )
+    camkii2 = leaky_integrate( ca, dt, 2e2 )
     df['Time'] = tvec
     df['calcium'] = ca
     df['CaMKII0'] = camkii0

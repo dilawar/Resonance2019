@@ -359,19 +359,21 @@ structure is shown in (\textbf{A}) below (from Protein Data Bank
 (https://www.rcbs.org)).
 
 \vspace{5mm}
-\begin{tabularx}{\linewidth}{p{3cm} X}
-\textbf{A}
+\begin{tikzpicture}[baseline, scale=1 , every node/.style={} ]
+    \node[label=north west:\bf{A}] (a) {
+            \includegraphics[width=1.5cm]{./camkii_pdb.png}
+        };
+    \node[right=of a.north east, anchor=north west, label=north west:\bf{B}] (b) {
+            \includegraphics[width=65mm]{./camkii_subunit_exchage.pdf}
+        };
+    \node[below=4mm of a.south west, anchor=north west, label=north west:\bf{C}] (c) {
+            \includegraphics[width=65mm]{./integrator.pdf}
+        };
+    \node[right=of c.north east, anchor=north west, label=north west:\bf{D}] (d) {
+        \includegraphics[width=50mm]{./camkii_pp1_switch_level1_detail.pdf}
+    };
 
-\includegraphics[height=2cm]{./camkii_pdb.png}
-&
-\textbf{B} 
-
-\includegraphics[width=9cm]{./camkii_subunit_exchage.pdf}
-\\
-\textbf{C} 
-
-\includegraphics[width=8cm]{./camkii_pp1_switch_level1_detail.pdf}
-\end{tabularx}
+\end{tikzpicture}	
 
 In \textbf{(B)}, we show subunit-exchange between two holoenzymes i.e. a fully
 active \gls{camkii} holoenzyme can loose an \textit{ACTIVE} subunit which can be
@@ -381,23 +383,21 @@ influx into synapse, \gls{ca} binds to \gls{cam} and create a complex
 \gls{cacam}. \gls{cacam} binds to \gls{camkii} and phosphorylate it. Note that
 first step involving activation of its first subunit is very slow for it
 requires binding of two \gls{cacam} simultaneously. Once a subunit has been
-activated, it helps in activation of its neighbours (only one \gls{cacam} is
-required now and therefore further phosphorylation proceeds at much faster
-rate). 
+activated, phosphorylation of its neighbour requires binding on only one
+\gls{cacam} and therefore further phosphorylation proceeds at much faster
+rate. 
 
 Note that the first very slow step of \gls{camkii} phosphorylation can be
-overcome by subunit-exchange. If an inactive holoenzyme has picked up an active
-subunit via subunit-exchange, it does not require simultaneous binding of two
-\gls{cacam} molecules. Therefore subunit exchange helps in spreading
-\gls{camkii} activation. It is interesting to note that via subunit exchange,
-\gls{camkii} can act at distance even when it is anchored in one place.  
+overcome by subunit-exchange when an inactive holoenzyme picks up an active
+subunit and thus requires binding of only one \gls{cacam} for further
+phosphorylation. Therefore subunit exchange helps in spreading
+\gls{camkii} activation. 
 
 \paragraph{Integration of \gls{ca} signal} A single \gls{camkii} holoenzyme acts
 as a leaky integrator of \gls{ca} activity i.e. it sums up \gls{ca} activity in
 time and also decays with a time-constant. Effectively it is similar to a leaky
 capacitor (\gls{ca} activity is applied current).
 } % box ends here.
-% \end{tcolorbox}
 
 In our computational study of this pathway, we show that subunit-exchange
 improves information retention capacity of \gls{camkii}. We also show that
