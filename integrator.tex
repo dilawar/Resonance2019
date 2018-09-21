@@ -19,16 +19,14 @@
 }
 
 \def\Widht{80mm}
-\def\Height{45mm}
+\def\Height{35mm}
 
 \begin{tikzpicture}[scale=1]
     \begin{axis}[ xlabel=Time, x unit=au
-        % , ylabel=Ca\textsuperscript{++}
-        , ylabel = Normalized Activity
-        , y unit = au
+        , ylabel style={align=center}
+        , ylabel = Normalized \\ Activity
         , enlargelimits=true
         , axis lines=left
-        , ylabel near ticks, yticklabel pos=left
         , width=\Widht, height=\Height
         , legend style={at={(1,1)}, anchor=south east}
         , legend columns=2

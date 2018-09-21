@@ -344,7 +344,7 @@ vitro} conditions.
 Among more than 2000 proteins found in brain, \gls{camkii} constitutes
 roughly 2\% of all. Furthermore, it is enriched in Hippocampus -- a brain
 structure essential for memory formation. Indeed, \gls{camkii} is known to
-play essential role in memory formation.  In experiments involving mice,
+play essential role in memory formation. In experiments involving mice,
 deactivating \gls{camkii} in any way has always resulted in impairment of
 memory formation and learning. 
 
@@ -367,37 +367,42 @@ structure is shown in (\textbf{A}) below (from Protein Data Bank
             \includegraphics[width=65mm]{./camkii_subunit_exchage.pdf}
         };
     \node[below=4mm of a.south west, anchor=north west, label=north west:\bf{C}] (c) {
-            \includegraphics[width=65mm]{./integrator.pdf}
+        \includegraphics[width=50mm]{./camkii_pp1_switch_level1_detail.pdf}
         };
     \node[right=of c.north east, anchor=north west, label=north west:\bf{D}] (d) {
-        \includegraphics[width=50mm]{./camkii_pp1_switch_level1_detail.pdf}
+            \includegraphics[width=65mm]{./integrator.pdf}
     };
 
 \end{tikzpicture}	
 
 In \textbf{(B)}, we show subunit-exchange between two holoenzymes i.e. a fully
 active \gls{camkii} holoenzyme can loose an \textit{ACTIVE} subunit which can be
-picked up by another holoenzyme and it becomes partially active. In
+picked up by another holoenzyme which becomes partially active. In
 \textbf{(C)}, we summarise the activation pathway of \gls{camkii}. Upon its
 influx into synapse, \gls{ca} binds to \gls{cam} and create a complex
 \gls{cacam}. \gls{cacam} binds to \gls{camkii} and phosphorylate it. Note that
 first step involving activation of its first subunit is very slow for it
 requires binding of two \gls{cacam} simultaneously. Once a subunit has been
 activated, phosphorylation of its neighbour requires binding on only one
-\gls{cacam} and therefore further phosphorylation proceeds at much faster
-rate. 
-
+\gls{cacam} and therefore further phosphorylation proceeds at much faster rate.
 Note that the first very slow step of \gls{camkii} phosphorylation can be
 overcome by subunit-exchange when an inactive holoenzyme picks up an active
 subunit and thus requires binding of only one \gls{cacam} for further
-phosphorylation. Therefore subunit exchange helps in spreading
-\gls{camkii} activation. 
+phosphorylation. Therefore subunit exchange helps in spreading \gls{camkii}
+activation. 
 
-\paragraph{Integration of \gls{ca} signal} A single \gls{camkii} holoenzyme acts
-as a leaky integrator of \gls{ca} activity i.e. it sums up \gls{ca} activity in
-time and also decays with a time-constant. Effectively it is similar to a leaky
-capacitor (\gls{ca} activity is applied current).
-} % box ends here.
+\paragraph{\gls{camkii} integrates \gls{ca} signal} A single \gls{camkii}
+holoenzyme acts as a leaky integrator of \gls{ca} activity i.e. it sums up
+\gls{ca} activity in time and also decays with a time-constant (leaky). See
+\textbf{(D)} to compare behaviour of three integrators of calcium activity: a
+non-leaky integrator and two leaky integrators with different leakage property.
+Mathematically, it is similar to a leaky capacitor if we model \gls{ca} activity
+as applied current and \gls{camkii} activity as voltage across capacitor.
+Integrators are useful when you want accumulate \emph{enough} information about
+$x$ before taking a decision e.g. a plant can \emph{decide} to flower or shed
+leaves only if integration of moisture in air and/or temperature during the day
+crosses a threshold value.
+} % box
 
 In our computational study of this pathway, we show that subunit-exchange
 improves information retention capacity of \gls{camkii}. We also show that
