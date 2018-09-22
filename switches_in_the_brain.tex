@@ -120,22 +120,6 @@ balance.
 % Hopefield network 
 \section{Hopfield network -- associative memory network}\label{sec:hopfield}
 
-% \begin{quote}
-% In mathematical networks, synaptic plasticity is the only non-trivial element 
-% available to produce interesting behaviour. If model networks can achieve anything 
-% approaching the behaviour of their biological counterparts then it will be clear 
-% that synaptic plasticity is remarkably powerful and likely to be of crucial importance. 
-% On the other hand, if the mathematical models cannot approach biological complexity then 
-% other elements such as more accurate descriptions of individual cell behaviour will 
-% have to be included in the models until we learn what minimum set of behaviours is needed 
-% to mimic biological systems. \\
-% \hfill -- L F Abbott
-% \end{quote}
-
-% Before we continue further, lets familiarize ourselves with one very popular
-% network which is made up of neuron like elements. In this network, patterns can
-% be stored and recalled.
-
 Memory storage and retrieval is trivially done by a computer. It will be helpful
 to compare memory storage in the computer and the brain. In the computer, we
 always know the address of every stored memory and we access it by providing
@@ -337,11 +321,11 @@ vitro} conditions.
 
     In this world full of fluctuations, stability is indeed very useful
     property. Life which is remarkably stable is made up of inherently noisy
-    molecules. Bistable chemical reaction network is the commonest motif in
+    molecules. Bistable chemical reaction network are ubiquitous in
     biology where high stability arise out of inherently noisy components.
 
     A bistable system -- as its name implies -- has two stable states. From the
-    point of view of experimentalist, if you obverse a bistable system for very
+    point of view of an experimentalist, if you obverse a bistable system for very
     long time, you would almost always find it in either of its two stable
     states. Just like an electrical switch which you would almost always find in
     either \texttt{ON} or \texttt{OFF} state.
@@ -355,17 +339,18 @@ vitro} conditions.
     \textbf{C}, we simulate the system described in \textbf{B} with probability
     of transition from A to B, and from B to A set to be 0.01.
 
-    Such stochastic bistable motif are commonplace in biology, especially found
-    in situations where cell has to make a decision such as cell division where
-    cell has to decide if to go to next state or not, and during cellular
-    differentiation when cell has to decide among possible fates.
+    Such stochastic bistable motif are commonplace in biology
+    \cite{ramakrishnan2008}, especially found in situations where cell has to
+    make a decision e.g. during cell division when a cell needs to decide
+    whether to go to next state or not, and in cellular differentiation during
+    development when a fate has to be chosen a cell.
 
     \paragraph{Bistable reaction networks} What essential features should a chemical
     system have to exhibit bistability? There are three necessary conditions:
     positive feedback, mechanism to filter out small stimuli, and a mechanism to
-    prevent explosions\cite{wilhelm}. The third one is rarely needed in
-    biological system since the reactants and energy are always in finite supply
-    and that itself prevent explosions.
+    prevent explosions\cite{wilhelm}. The third one is usually met in
+    biological system since reacting molecules and energy available for
+    reactions are always in finite supply and that itself prevent explosions.
 }
 
 % CaMKII box.
@@ -512,6 +497,12 @@ I'd like to thank Somya Mani for helpful suggestions on the manuscript.
     Thoman Wilhelm,
     \textit{The smallest chemical reaction system with bistability},
     BMC Systems Biology, vol. 3, No 1 (Sep 2009)
+
+    \bibitem{ramakrishnan2008}
+    Naren Ramakrishnan, Upinder S. Bhalla
+    \textit{Memory Switches in Chemical Reaction Space},
+    PLOS Computational Biology, No 7 vol. 4 (July 2008)
+
 \end{thebibliography}
 
 \end{document}
