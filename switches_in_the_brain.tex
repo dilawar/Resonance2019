@@ -7,7 +7,7 @@
 \usepackage{pgfplots}
 \usepackage{grffile}
 \usepackage{amsmath}
-\usepackage{lipsum}  % remove after testing.
+\usepackage{sidecap}
 \usepackage{mathtools}
 \usepackage{wrapfig}
 \usepackage{chemfig}
@@ -16,6 +16,7 @@
 \usepackage{tabularx} 
 \usepackage{amssymb}
 \usetikzlibrary{shapes,backgrounds,calc,arrows,arrows.meta}
+\pgfplotsset{compat=1.15}
 
 \usepackage[acronym]{glossaries}
 \input{glossaries}
@@ -299,14 +300,17 @@ have shown that \gls{camkii} may form a bistable switch in synapse.
 
 \section{Molecular bistable switch at synapse}\label{sec:molecular_switch}
 
-\begin{figure}[ht!]
-    \centering
-    \includegraphics[width=8cm]{./lisman_bistable.pdf}
-    \caption{Reaction in a bistable switch proposed by John Lisman. Modified
-        from \cite{lisman1985}. Permission not required for reuse for
-        educational purpose.
-    }\label{fig:lisman}
-\end{figure}
+\rightHighlight{
+% \begin{figure}[ht!]
+    % \centering
+    \includegraphics[width=4cm]{./lisman_bistable_small.pdf}
+    %\caption{
+    Reaction in a bistable switch proposed by John Lisman. Modified
+    from \cite{lisman1985}. 
+    %}
+    \label{fig:lisman}
+% \end{figure}
+}
 
 John Lisman hypothesised that a kinase and a phosphatase together
 (\Fig{fig:lisman}) can form a bistable switch which is stable against
@@ -319,44 +323,70 @@ vitro} conditions.
 % Bistable box
 \boxTexteven{Bistability in reaction network} {
 
-    In this world full of fluctuations, stability is indeed very useful
-    property. Life which is remarkably stable is made up of inherently noisy
-    molecules. Bistable chemical reaction network are ubiquitous in
-    biology where high stability arise out of inherently noisy components.
+    \def\StateA{\tikz \node[circle, dashed, draw, inner sep=1pt] {\scriptsize
+    \textsf{A}};}
+    \def\StateB{\tikz \node[circle, dashed, draw, inner sep=1pt] {\scriptsize
+    \textsf{B}};}
+
+    In a world full of fluctuations, stability is indeed very useful property.
+    Life is remarkably stable even though it is made up of inherently noisy
+    components. Bistable chemical networks are ubiquitous in biology. In
+    bistable chemical networks, noisy components acts together to give rise to 
+    highly (bi)stable behaviour.
 
     A bistable system -- as its name implies -- has two stable states. From the
-    point of view of an experimentalist, if you obverse a bistable system for very
-    long time, you would almost always find it in either of its two stable
+    point of view of an experimentalist, if you obverse a bistable system for
+    very long time, you would almost always find it in either of its two stable
     states. Just like an electrical switch which you would almost always find in
-    either \texttt{ON} or \texttt{OFF} state.
+    either \texttt{ON} or \texttt{OFF} state (and rest of the time in transition
+    between \texttt{ON} and \texttt{OFF}).
 
-    \vspace{3mm} \includegraphics[width=\linewidth]{./stability_noise.pdf} In
-    the figure above, \textbf{A} shows an example of deterministic bistable
-    system; its stable states are labelled A and B. Any particle released in
-    this system will always end up in either A or B. In \textbf{B}, we show
-    state transition diagram of a stochastic bistable system.  The transition
-    arrow depicts the probability of transition from one state to another. In
+    \vspace{3mm} \includegraphics[width=\linewidth]{./stability_noise.pdf} 
+
+    In the figure above, \textbf{A} show a conceptual model of bistability.  The
+    energy landscape of a bistable system has two minima (\StateA and \StateB),
+    therefore, the system always ends up in either of them. It is a
+    deterministic bistable system. \textbf{B} shows a conceptual representation
+    of stochastic bistable system as state transition diagram.  The arrows
+    depict the probability of transition from one state to the other. In
     \textbf{C}, we simulate the system described in \textbf{B} with probability
-    of transition from A to B, and from B to A set to be 0.01.
+    of transition from A to B, and from B to A set to be 0.01. Note that each
+    time, this trajectory will be different but the average of many trajectories
+    will be equivalent to a deterministic bistable system.
 
     Such stochastic bistable motif are commonplace in biology
     \cite{ramakrishnan2008}, especially found in situations where cell has to
-    make a decision e.g. during cell division when a cell needs to decide
-    whether to go to next state or not, and in cellular differentiation during
-    development when a fate has to be chosen a cell.
+    make a decision. One such motif is show below in both deterministic and
+    stochastic settings. There are three necessary conditions a network must
+    have to be able to show bistability: positive feedback, mechanism to filter
+    out small stimuli, and a mechanism to prevent explosions\cite{wilhelm}. 
 
-    \paragraph{Bistable reaction networks} What essential features should a chemical
-    system have to exhibit bistability? There are three necessary conditions:
-    positive feedback, mechanism to filter out small stimuli, and a mechanism to
-    prevent explosions\cite{wilhelm}. The third one is usually met in
-    biological system since reacting molecules and energy available for
-    reactions are always in finite supply and that itself prevent explosions.
+    %% \vspace{4mm}
+    %\begin{wrapfigure}[4]{r}{8cm}
+    %    \begin{minipage}{\dimexpr8cm-2\fboxsep-2\fboxrule}\centering
+    %        \includegraphics[width=7cm]{./strong_bis_naren_and_bhalla.pdf}
+    %        \caption[Différents encodages]{Différents types d'encodage pour «Wikipédia, l'encyclopédie libre»}
+    %    \end{minipage}
+    %\end{wrapfigure}
+
+    \vspace{3mm}
+    \begin{tikzpicture}[scale=1 , every node/.style={} ]
+        \node[] (img) {
+                \includegraphics[width=8.7cm]{./strong_bis_naren_and_bhalla.pdf}
+            };
+
+        \node[right=-5mm of img, text width=4.8cm, align=justify] {
+                A bistable chemical system adapted from \cite{ramakrishnan2008}.
+                Species $b$ and $c$ catalyze their production (positive feedback) and
+                inhibits production of $a$. On right, two trajectories are shown in
+                different settings. (top) System is deterministic; (bottom) System is
+                stochastic.
+            };
+    \end{tikzpicture}	
 }
 
 % CaMKII box.
-\boxTextodd{
-
-\gls{camkii} at synapse: A brief overview of its properties and function} {
+\boxTextodd{\gls{camkii} at synapse: A brief overview of its properties and function} {
 Among more than 2000 proteins found in brain, \gls{camkii} constitutes roughly
 2\% of all. Furthermore, it is enriched in Hippocampus -- a brain structure
 essential for memory formation. Indeed, \gls{camkii} is known to play essential

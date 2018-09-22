@@ -1,11 +1,11 @@
 \RequirePackage{luatex85,shellesc}
-% \documentclass[multi=false, varwidth=13.5cm]{standalone}
-\documentclass[multi=false]{standalone}
+\documentclass[multi=false, varwidth=13.5cm]{standalone}
+% \documentclass[multi=false]{standalone}
 \usepackage{pgfplots}
 \usepgfplotslibrary{units}
 \usepackage{tabularx}
-
 \usepackage[sfdefault]{FiraSans}
+\usepackage[small]{eulervm}
 
 \usetikzlibrary{patterns, intersections, calc, hobby}
 \usetikzlibrary{positioning,calc,shapes}
@@ -25,17 +25,18 @@
 \edef\L{0.1}                                            
 \edef\M{0.5}                                            
 
-\begin{tabularx}{13.5cm}{p{5cm} p{2cm} p{3.5cm}}
+\begin{tabularx}{13.5cm}{p{4cm} p{3cm} p{5cm}}
     \textbf{A}
 
 \begin{tikzpicture}[scale=1 , every node/.style={inner sep=1pt} ]
 \begin{axis}[ xlabel=x,ylabel=E
         , enlargelimits=true
         , xtick=\empty , ytick=\empty
-        , height=4cm, width=6cm 
+        , height=4cm, width=5cm 
         , ymin = 0
         , ylabel near ticks
         , xlabel near ticks
+        , title = Deterministic
     ]
 
     %%% Use Hobby; NOTE: Don't. Looks like a human butt.
@@ -47,10 +48,8 @@
         ] coordinates  {(0,\H) (0.1,0.5*\H) (0.25,\L) (0.5,\M) (0.75,\L) (0.9,.5*\H) (1,\H)
     };
 
-    \node[draw,circle, ball color=blue, shading=ball, anchor=south,
-        , inner sep=3pt
-        % , label=\footnotesize Unstable
-        ] (unstable) at (axis cs:0.5,\M) {};
+    \node[circle, ball color=red, shading=ball, anchor=south, inner sep=3pt] 
+        (unstable) at (axis cs:0.5,\M) {};
 
     \node[above=0mm of unstable] {$\leftrightarrow$};
 
@@ -68,25 +67,38 @@
 \textbf{B}
 
 \begin{tikzpicture}[scale=1 , every node/.style={} ]
-    \node[fill=blue!50, circle] (a) {A};
-    \node[below right=1.25cm of a, fill=blue!50, circle] (b) {B};
+    \node[] (title) {Stochastic};
 
-    \draw[-latex, dashed] (a) to[bend right] (b);
-    \draw[-latex, dashed] (b) to[bend right] (a);
+    \node[fill=blue!50, circle, below=of title.south west
+        , anchor=north east 
+        , xshift=5mm] (a) {A};
 
-    \draw[-latex, very thick] (a) to[loop above] (a);
-    \draw[-latex, very thick] (b) to[loop below] (b);
+    \node[right=1.25cm of a, fill=blue!50, circle] (b) {B};
+
+    \draw[-latex, dashed] (a) to[bend right] 
+        node[below,sloped] {\footnotesize $P(A \rightarrow B)$} 
+        (b);
+
+    \draw[-latex, dashed] (b) to[bend right]
+        node[above, sloped] {\footnotesize $P(B \rightarrow A)$} 
+        (a);
+
+    \draw[-latex, very thick] (a) to[loop left] (a);
+    \draw[-latex, very thick] (b) to[loop right] (b);
+
 \end{tikzpicture}	
+
 & 
 \textbf{C}
 
 \begin{tikzpicture}[scale=1]
     \begin{axis}[ name=a,
-            xlabel=Time, x unit=au
-            , width=5cm, height=3cm 
+            xlabel=\# Steps
+            , width=5.5cm, height=3cm 
             , ytick={0.1,0.9}
             , yticklabels={A,B}
             , enlargelimits = true
+            , title = A sample behaviour
         ]
         \addplot [color=blue, thick] gnuplot [ raw gnuplot ] {
             set datafile separator ',';

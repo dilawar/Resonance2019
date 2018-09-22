@@ -14,6 +14,7 @@ import matplotlib.image as mpimg
 import pylab
 import numpy
 import sys
+import pandas as pd
 
 def main():
         """
@@ -39,7 +40,7 @@ def main():
         mfile = './M1719.g'
         runtime = 300.0
         if ( len( sys.argv ) >= 2 ):
-                solver = sys.argv[1]
+            solver = sys.argv[1]
         modelId = moose.loadModel( mfile, 'model', solver )
         # Increase volume so that the stochastic solver gssa 
         # gives an interesting output
@@ -69,6 +70,7 @@ def main():
         moose.start( runtime ) 
 
         # Display all plots.
+        df = pd.DataFrame()
         img = mpimg.imread( 'strongBis.png' )
         fig = plt.figure( figsize=(12, 10 ) )
         png = fig.add_subplot( 211 )
@@ -77,6 +79,9 @@ def main():
         x = moose.wildcardFind( '/model/#graphs/conc#/#' )
         dt = moose.element( '/clock' ).tickDt[18]
         t = numpy.arange( 0, x[0].vector.size, 1 ) * dt
+        df['time'] = t
+        for i in range(3):
+            df[x[i].name] = x[i].vector
         ax.plot( t, x[0].vector, 'r-', label=x[0].name )
         ax.plot( t, x[1].vector, 'g-', label=x[1].name )
         ax.plot( t, x[2].vector, 'b-', label=x[2].name )
@@ -84,6 +89,7 @@ def main():
         plt.xlabel( 'Time (seconds)' )
         pylab.legend()
         pylab.savefig( 'res.png' )
+        df.to_csv( '%s.csv' % solver, index = False )
 
 # Run the 'main' if this script is executed standalone.
 if __name__ == '__main__':
