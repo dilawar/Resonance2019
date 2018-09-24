@@ -202,21 +202,18 @@ maintenance of the level -- or the activity -- of $X$. Therefore, the problem of
 ``\emph{synapse maintaining its state}'' becomes the problem of ``molecule
 \emph{$X$ maintaining its state}'' -- a more concretely defined problem.
 
-\begin{figure}[h!]
-    \caption{Phosphorylation and deposphorylation of X. P is phosphatase.}\label{fig:model}
-    \includegraphics[]{./fig_model.pdf}
-\end{figure}
-
-Lets assume that $X$ is converted to its \texttt{ACTIVE} form $X^*$  by adding a
+Lets assume that $X$ is converted to its active form $X^*$  by adding a
+\rightHighlight{
+    \raggedright
+    \includegraphics[width=3.5cm]{./fig_model.pdf}
+}
 phosphoryl group ($PO_4^{2-}$). The phosphoryl group is removed by a phosphatase
-and $X^*$ is turned back into \texttt{INACTIVE} $X$. The phosphorylation and its
+and $X^*$ is turned back into inactive $X$. The phosphorylation and its
 counterpart dephosphorylation are a very common motif for controlling various
-chemical reactions by \textit{activating} and \textit{inactivating} protein
-molecules. Once most if not all $X$ has been turned into $X^*$ during
-memory formation, how do we make sure that $X^*$ does not turn back into $X$
-(lose memory)?
+chemical reactions by activating and inactivating protein molecules. Once most
+if not all $X$ has been turned into $X^*$ during memory formation, how do we
+make sure that $X^*$ does not turn back into $X$ (lose memory)?
 
-\rightHighlight{Can you think of other set of hypotheses? It must conform to laws of chemistry!}
 Let's mull over a solution to this problem of long term maintenance of $X^*$.
 Let's assume that somehow followings are true. 
 \begin{enumerate}
@@ -231,6 +228,9 @@ Let's assume that somehow followings are true.
     \item Dephosphorylation of $X^*$ is minimized by controlling the number of
         $P$ or reducing the reaction rate.
 \end{enumerate} 
+\rightHighlight{Can you think of other set of hypotheses? It must conform to
+laws of chemistry!}
+
 
 Both (1) and (2) help in making $X^*$ highly stable. Problem solved? No.  Now
 we have constructed a rigid synapse. Recall the \textit{rigid} v/s
@@ -261,45 +261,45 @@ $X^*$. Then due to auto-phosphorylation, sooner than later, all of the $X$ will 
 into $X^*$. We have created a very stable memory of nothing but background
 noise. This is highly undesirable!
 
-The second problem is \textit{turnover} i.e. old molecules are constantly degraded
-and being replaced by newly minted molecules. Assume that at the time of memory
-formation, we had 100 molecules of $X^*$ in synapse. And also assume that on
-average, every day one new molecule (i.e. $X$) replaces an old one ($X^*$).
-After 50 days, half of the synaptic strength is gone! We must have a
-\textit{refresh} mechanism by which we make sure that the new molecule quickly
-changes its state according to the state of synapse i.e. newborn $X$ becomes
-$X^*$ most molecules at synapse are $X^*$.
+The second problem is \textit{turnover} i.e. old molecules are continuously
+degraded and being replaced by newly minted molecules. Let's assume that at the
+time of memory formation, we had 100 molecules of $X^*$ in synapse. And let's
+also assume that on average, every day one new formed molecule (i.e. $X$)
+replaces an old one ($X^*$).  After 50 days, half of the synaptic strength is
+gone! To counter this, we must have a \textit{refresh} mechanism by which the
+newly added molecule quickly changes its state according to the state of synapse
+i.e. newborn $X$ becomes $X^*$.
 
-Effectively, we want a stable \texttt{ACTIVE} state (where all $X$ are $X^*$)
-and don't want chemical noise to turn $X$ into $X^*$. We want a switch like
-behaviour -- if it is \textit{OFF} or \text{ON} it tends to stay \textit{OFF} or
-\texttt{ON} respectively. A significant force is required to flip a switch; it
-does not get flipped by noise. If few $X$ are turned into $X^*$ by background
-noise, we expect them to be quickly turned back into $X$ by phosphatase. And if
-during memory formation, a significant portion of $X$ has been turned into $X^*$
-then we expect that any $X^*$ turned back into $X$ is quickly activated again
-into $X^*$.  This system should operate like a switch which does not flip unless
-significant force is applied. These are called \textbf{bistable switch}es. 
-
-\begin{figure}[t!]
+\begin{figure}[b!]
 \centering
-\includegraphics[width=\linewidth]{./fig_model_b.pdf}
 \caption{A hypothetical network which can solve the problem of chemical noise and
-    turnover with suitable parameters (how?). The activation step is divided into slow and fast
-    components such that fluctuations caused by background noise do not cause system to 
-    activate itself. $X^*$ also partially activate $X$ to $X^\sim$ to overcome \textit{turnover}. 
+    turnover with suitable parameters (how?). The activation step is divided
+    into slow and fast components such that fluctuations caused by background
+    noise do not cause system to activate itself. $X^*$ also partially activate
+    $X$ to $X^\sim$ to overcome \textit{turnover.}
 }\label{fig:model_bistable}
+\includegraphics[width=\linewidth]{./fig_model_b.pdf}
 \end{figure}
+
+Effectively, we want a stable \texttt{ACTIVE} state (all $X$ are $X^*$) which is
+immune to turnover. We also don't want chemical noise to turn $X$ into $X^*$.
+We want a switch like behaviour i.e. if it is \textit{OFF} or \text{ON} it tends
+to stay \textit{OFF} or \texttt{ON}. If a few $X$ss are turned into $X^*$ by
+background noise, we want them to be quickly turned back into $X$ by
+phosphatase. And if during memory formation, a significant portion of $X$ has
+been turned into $X^*$ then we want that any $X^*$ deactivated into $X$ is
+quickly activated again into $X^*$.  This system should operate like a switch
+which does not flip unless significant force is applied. These are called
+\textbf{bistable switch}es. 
 
 Is there any  proof that bistable systems are even possible? Do they occur at
 all in living cells?  Bistability (and its close relative oscillations) are very
 common in biology; from cellular level to population levels. So if it won't be
-surprising if we find bistable switches in syanpses as well.  \emph{Is there a set
-of chemical reactions which forms a bistable switch at synapse?} Various studies
-have shown that \gls{camkii} may form a bistable switch in synapse.
+surprising if we find bistable switches in syanpses as well. Indeed, various
+studies have shown that \gls{camkii} \emph{may} form a bistable switch in
+synapse.
 
 \section{Molecular bistable switch at synapse}\label{sec:molecular_switch}
-
 \rightHighlight{
     \includegraphics[width=4cm]{./lisman_bistable_small.pdf}
     Reaction in a bistable switch proposed by John Lisman. Modified
