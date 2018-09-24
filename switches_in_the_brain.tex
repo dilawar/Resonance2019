@@ -56,7 +56,7 @@
 
 \maketitle
 \monthyear{May 2018}
-\artNature{GENERAL  ARTICLE}
+\artNature{GENERAL ARTICLE}
 
 \section{Introduction}\label{sec:intro}
 
@@ -68,17 +68,10 @@ changing these connections.
 Let's label these synapses as $s_1, s_2, \ldots s_n$. A subset of these synapses
 participate in a specific memory formation. For example, my memory of being
 chased by a ferocious street dog named \emph{Lalu} (lets call it
-$M_\text{Lalu}$) is represented by the set of the synapses
-$M_\text{Lalu}=(s_{10}, s_{21}, s_{12},\ldots,s_{331})$ i.e. these connections
+$M_\text{Lalu}$) is represented by the set of synapses
+$M_\text{Lalu}=(s_{10}, s_{21}, s_{12},\ldots,s_{331})$ i.e., these connections
 were changed during my troubling encounter with Lalu. I sometimes recall this
 memory whenever I see a similar looking dog. 
-
-%% The ability to learn quickly from an experience and to recall it has obvious
-%% advantages. Learning is a form of memory (and so is confidence). We are going to
-%% use these terms interchangeably. The ability to remember and recall painful
-%% encounters with predators helps all animals in avoiding them.  The ability to
-%% remember the location or cue of food, water and mates, seasonal events for
-%% migration or reproduction are just a few other examples of usefulness of memory. 
 
 \begin{figure}[!b] 
     \caption{Memory formation and forgetting. During formation of
@@ -89,7 +82,7 @@ memory whenever I see a similar looking dog.
 \end{figure}
 
 I can recall an experience as long as the set of synapses in which the
-particular experience was stored remains \emph{intact}. Therefore our
+particular experience was stored remains \emph{intact}. Therefore, our
 ability to remember is contingent on our brain's ability to keep its connections
 intact.  But on the other hand, our ability to learn depends on our brain's
 ability to change its connections. And here is the first challenge!
@@ -101,22 +94,22 @@ ability to change its connections. And here is the first challenge!
 }
 
 For $M_\text{Lalu}$ (or any other memory) to remain intact, each of its
-component ($s_{10}, s_{21}, s_{12} \ldots$) should also remain intact.  The
-longer a synapse can keep itself unchanged, the better it will be at keeping the
-memory. Lets assume that somehow I create a synapse which maintain its state for
-a very long time (i.e. a rigid synapse). This synapse will not \emph{forget}
-easily, but it causes another problem. Rigid synapse will not participate in any
-memory formation anymore since learning requires change and it can't change. It
-behaves like a read-only compact disk. On the other hand, if I create a synapse
-which is easily changeable (i.e. a plastic synaspe), it will be good at learning
-new experiences but won't be able to retain it for long. Plastic synapse forgets
-easily.  We know that not only we remember for long time, we are capable of
-learning quickly too. For example, honey bees can learn the location of food
-after one encounter with flowers.  Indeed a good memory system is the one which
-learns quickly from new experiences and forgets old information as slowly as
-possible.  Forgetting and remembering are the two sides of the same coin.  They
-are conflicting demands -- a zero-sum game.  The challenge is to strike a
-balance. 
+components ($s_{10}, s_{21}, s_{12} \ldots$) should also remain intact.  The
+longer a synapse can keep itself unchanged, the better it will be at remembering
+the memory. Let's assume that somehow I create a synapse which maintains its
+state for a very long time (i.e., a rigid synapse). This synapse will not
+\emph{forget} easily, but it causes another problem. Rigid synapse will not
+participate in any memory formation anymore since learning requires change, and
+a rigid syanpse can't change. It behaves like a read-only compact disk. On the other hand, if
+I create a synapse which is easily changeable (i.e., a plastic synaspe), it will
+be good at learning new experiences but won't be able to retain them for long.
+Plastic synapse forgets easily.  We know that not only we remember for long
+time, we are capable of learning quickly too. For example, honey bees can learn
+the location of food after one encounter with flowers.  Indeed, a good memory
+system is the one which learns quickly from new experiences and forgets old
+information as slowly as possible.  Forgetting and remembering are two sides of
+the same coin.  They are conflicting demands i.e., improving one will always
+deteriorate the other -- a zero-sum game.  The challenge is to strike a balance. 
 
 % Hopfield network 
 \section{Hopfield network -- associative memory network}\label{sec:hopfield}
@@ -130,7 +123,7 @@ a reference book to find a chapter. Our brain, on the other hand, is very
 unlikely to have such an indexing mechanism. 
 
 We recall when we are provided with \textit{cues}. For example, when you see
-some part of of a familiar person in a wedding album -- while the rest of the
+some part of a familiar person in a wedding album -- while the rest of the
 person may be hidden behind others -- you could easily identify the person. And
 many other memories of that person will also be recalled. A famous class of
 recurrent neural network popularly known as Hopfield network can do just the
@@ -149,11 +142,11 @@ same as shown in \Fig{fig:hopfield}.
 \end{figure}
 
 How does this recurrent network work is beyond the scope of article. Readers are
-encouraged to explore more by themselves. \emph{``How well we can explain biological
-memory by these network''} is an active research area.  Though these networks are
-extremely successful in accomplishing various \textit{brain-like} computation
-(\textit{a la} machine learning), I would like to advise the reader to be sceptical by
-noting the following:
+encouraged to explore more by themselves. \emph{``How well can we explain
+biological memory by these networks?''} is an active research area.  Though
+these networks are extremely successful in accomplishing various
+\textit{brain-like} computations (\textit{a la} machine learning), I would like
+to advise the reader to be skeptical by noting the following:
 
 \begin{itemize}
     \item  Neurons used in these networks are highly simplified. \textit{Real}
@@ -162,9 +155,9 @@ noting the following:
         communication and learning by changing synaptic connections, they do
         ignore rich local computations which can be accomplished by branches of
         these neurons called \textit{dendrites}.
-    \item  There is no strong evidence that neurons make such dense recurrent
+    \item  There is no evidence that neurons make such dense recurrent
         connections. However some studies have shown that Hopfield network can
-        work with very sparse recurrent connections as well. 
+        work with very sparse recurrent connections as well.
     \item Activity in these networks does not match usually observed activity 
         in the primate brain during memory-recall experiments.
 \end{itemize}
@@ -173,19 +166,19 @@ noting the following:
 comparison and contrast and often provide very useful insight. But in the end, these
 solutions must be tested under the constraints imposed by biology.}
 
-Nonetheless, these network provide us with a framework to concretely think about
-the problem of memory storage and its recall. We learn a great deal about these
-problem by pointing out the limitations and failure of these models. Hopfield
-network has properties which will sound very natural to us. Can you store as
-many memories as you like in these networks? No. There is an upper limit. Adding
-more patterns over maximum limit causes distortion in memories. When a cue is
-given, the network no longer fetch the right pattern. It often fetches a pattern
-which was not even stored; the retrieved pattern instead resemble some mixture
-of many stored patterns. When too many memories are stored, they corrupt each
-other by mixing up. One can ask more questions. What if connections are allowed 
-to decay in these networks, and when memories starts disappearing, do the
-weakest memory disappearing first or the newest? When a new memory is added,
-what happens to the old memories?
+Nonetheless, these networks provide us with a framework to concretely think
+about the problem of memory storage and recall. We learn a great deal about
+these problems by pointing out the limitations and failures of these models.
+Hopfield network has properties which will sound very natural to us. Can you
+store as many memories as you like in these networks? No. There is an upper
+limit. Adding more patterns over maximum limit causes distortion in memories.
+When a cue is given, the network no longer fetches the right pattern. It often
+fetches a pattern which was not even stored; the retrieved pattern instead
+resemble some mixture of stored patterns. When too many memories are stored,
+they corrupt each other by mixing up. One can ask more questions. When
+connections decay in these networks and memories start disappearing, which
+memory disappear first: the weakest or the newest? And, when a new memory is
+added, what happens to the old memories?
 
 After this necessary detour, lets go back to the main theme: how do synapses
 maintain their state?
@@ -193,21 +186,21 @@ maintain their state?
 \section{How does a synapse maintain its state?}
 
 Very complex biochemistry plays out during learning that changes the synapse.
-Surprisingly, the net effect of this complex biochemistry can be summarised by a simple
-mathematical expression. Ah, \emph{the unreasonable effectiveness of
+Surprisingly, the net effect of this complex biochemistry can be summarised by a
+simple mathematical expression. Ah, \emph{the unreasonable effectiveness of
 mathematics}\cite{unreasonable_math}! Let's assume that synaptic strength $w$ is
 tightly correlated with a chemical species $X$ found at synapse i.e. $w$ changes
 with $X$.  The problem of maintenance of $w$ can be rephrased as the problem of
-maintenance of the level -- or the activity -- of $X$. Therefore, the problem of
-``\emph{synapse maintaining its state}'' becomes the problem of ``molecule
-\emph{$X$ maintaining its state}'' -- a more concretely defined problem.
+maintenance of the activity of $X$. Therefore, the problem of ``\emph{synapse
+maintaining its state}'' becomes the problem of ``\emph{molecule $X$ maintaining
+its state}'' -- a more concretely defined problem.
 
-Lets assume that $X$ is converted to its active form $X^*$  by adding a
+Let's assume that $X$ is converted to its active form $X^*$  by adding a
 \rightHighlight{
     \raggedright
     \includegraphics[width=3.5cm]{./fig_model.pdf}
-}
-phosphoryl group ($PO_4^{2-}$). The phosphoryl group is removed by a phosphatase
+} 
+phosphoryl group ($PO_3^{2-}$). The phosphoryl group is removed by a phosphatase
 and $X^*$ is turned back into inactive $X$. The phosphorylation and its
 counterpart dephosphorylation are a very common motif for controlling various
 chemical reactions by activating and inactivating protein molecules. Once most
@@ -215,9 +208,10 @@ if not all $X$ has been turned into $X^*$ during memory formation, how do we
 make sure that $X^*$ does not turn back into $X$ (lose memory)?
 
 Let's mull over a solution to this problem of long term maintenance of $X^*$.
-Let's assume that somehow followings are true. 
+Here is one potential solution.
+
 \begin{enumerate}
-    \item \textbf{(Amplification)} $X^*$ \textbf{auto-phosphorylate} itself i.e. \tikz[baseline]{ 
+    \item \textbf{(Amplification)} $X^*$ \textbf{auto-phosphorylates} itself i.e. \tikz[baseline]{ 
             \node (x) {$X$};
             \node[right=9mm of x] (xp) {$X^*$};
             \draw[-latex] (x) -- (xp);
@@ -231,51 +225,50 @@ Let's assume that somehow followings are true.
 \rightHighlight{Can you think of other set of hypotheses? It must conform to
 laws of chemistry!}
 
-
 Both (1) and (2) help in making $X^*$ highly stable. Problem solved? No.  Now
 we have constructed a rigid synapse. Recall the \textit{rigid} v/s
-\textit{pastic} synpase dilemma discussed previously (section
+\textit{plastic} synpase dilemma discussed previously (section
 \ref{subsec:zero_sum}). This synapse will definitely remember for longer
 but it will not participate in any new learning anymore.
 
 As long as we are in the realm of theory, let's propose a solution to this
-problem . We add another reaction say $P'+X^*\rightarrow P'X \rightarrow P'+X$
-which deactivates $X^*$ when the \textit{need} arise. Phosphatase P' is different
-than P. This adds another layer of control to an already complicated problem i.e.
-forgetting is now controlled by another process. This requires one more
-explanation: how does this new mechanism controlling \textit{forgetting} works?
-And philosophically -- if you care about it -- it violates the principle of
-\textbf{parsimony} which recommends to pick the simplest explanation.
+problem. We add another reaction say $P'+X^*\rightarrow P'X \rightarrow P'+X$
+which deactivates $X^*$ when the \textit{need} arises. Phosphatase P' is
+different from P. This adds another layer of control to an already complicated
+problem i.e.  forgetting is now controlled by another process. This requires one
+more explanation: how does this new mechanism controlling \textit{forgetting}
+work?  And philosophically -- if you care about it -- it violates the principle
+of \textbf{parsimony} which recommends to pick the simplest explanation.
 
 We still have two big problems hiding underneath. We have not considered the
 underlying biological hardware i.e. synapse in any detail where this biochemical
-network suppose to function. The first problem is chemical noise 
-. For biochemical system operating in very small volumes,
-effect of chemical noise can be very strong. \leftHighlight{The volume of a
-typical synapse is \SI{1e-20}{\cubic\meter}. At this volume, \SI{1}{\micro M}
-concentration is roughly equal to 6 molecules.} There are over 200 types of
-protein molecules in a typical synapse. Indeed, most of these protein molecules have few
-tens of molecules.  The brain is always active and  the chemical noise caused by
-the background activity in the brain will surely turn some molecules of $X$ into
-$X^*$. Then due to auto-phosphorylation, sooner than later, all of the $X$ will be turned
-into $X^*$. We have created a very stable memory of nothing but background
-noise. This is highly undesirable!
+network suppose to function. The first problem is chemical noise . For a
+biochemical system operating in very small volumes, effect of chemical noise can
+be very strong. \leftHighlight{The volume of a typical synapse is
+\SI{1e-20}{\cubic\meter}. At this volume, \SI{1}{\micro M} concentration is
+roughly equal to 6 molecules.} There are over 200 types of protein molecules in
+a typical synapse. Indeed, most of these protein molecules have few tens of
+molecules.  The brain is always active and the chemical noise caused by the
+brain's background activity will surely turn some molecules of $X$ into $X^*$.
+Then due to auto-phosphorylation, sooner than later, all of the $X$ will be
+turned into $X^*$. We have created a very stable memory of nothing but
+background noise. This is highly undesirable!
 
 The second problem is \textit{turnover} i.e. old molecules are continuously
 degraded and being replaced by newly minted molecules. Let's assume that at the
-time of memory formation, we had 100 molecules of $X^*$ in synapse. And let's
-also assume that on average, every day one new formed molecule (i.e. $X$)
+time of memory formation, we had 100 molecules of $X^*$ in the synapse. And
+let's also assume that on average, every day one new formed molecule (i.e. $X$)
 replaces an old one ($X^*$).  After 50 days, half of the synaptic strength is
 gone! To counter this, we must have a \textit{refresh} mechanism by which the
 newly added molecule quickly changes its state according to the state of synapse
-i.e. newborn $X$ becomes $X^*$.
+i.e. newborn $X$ becomes $X^*$ if most molecules at synapses are $X^*$.
 
 \begin{figure}[b!]
 \centering
 \caption{A hypothetical network which can solve the problem of chemical noise and
     turnover with suitable parameters (how?). The activation step is divided
     into slow and fast components such that fluctuations caused by background
-    noise do not cause system to activate itself. $X^*$ also partially activate
+    noise do not cause the system to activate itself. $X^*$ also partially activate
     $X$ to $X^\sim$ to overcome \textit{turnover.}
 }\label{fig:model_bistable}
 \includegraphics[width=\linewidth]{./fig_model_b.pdf}
@@ -283,21 +276,22 @@ i.e. newborn $X$ becomes $X^*$.
 
 Effectively, we want a stable \texttt{ACTIVE} state (all $X$ are $X^*$) which is
 immune to turnover. We also don't want chemical noise to turn $X$ into $X^*$.
-We want a switch like behaviour i.e. if it is \textit{OFF} or \text{ON} it tends
-to stay \textit{OFF} or \texttt{ON}. If a few $X$ss are turned into $X^*$ by
-background noise, we want them to be quickly turned back into $X$ by
-phosphatase. And if during memory formation, a significant portion of $X$ has
-been turned into $X^*$ then we want that any $X^*$ deactivated into $X$ is
-quickly activated again into $X^*$.  This system should operate like a switch
+We want a switch like behaviour i.e. if it is \textit{OFF} or \texttt{ON} it
+tends to stay \textit{OFF} or \texttt{ON}. If a few $X$ are turned into $X^*$ by
+background noise, we want them to be quickly turned back into $X$ by the
+phosphatase $P$. And if during memory formation, a significant portion of $X$
+has been turned into $X^*$ then we want that any $X^*$ deactivated into $X$ is
+quickly activated again into $X^*$. This system should operate like a switch
 which does not flip unless significant force is applied. These are called
-\textbf{bistable switch}es. 
+\textbf{bistable switch}es (See Box 1 for overview of bistability). 
 
-Is there any  proof that bistable systems are even possible? Do they occur at
-all in living cells?  Bistability (and its close relative oscillations) are very
-common in biology; from cellular level to population levels. So if it won't be
-surprising if we find bistable switches in syanpses as well. Indeed, various
-studies have shown that \gls{camkii} \emph{may} form a bistable switch in
-synapse.
+Is there any evidence that bistable chemical reaction networks exist? Do they
+occur at all in living cells?  Bistability (and its close relative oscillations)
+are very common in biology (Why? What is the reason for their \emph{selection}
+by evolution?)); from cellular level to population levels. So it
+won't be surprising if we discover bistable switches operating at syanpse as
+well. Indeed, various studies have shown that \gls{camkii} \emph{may} form a
+bistable switch in synapse.
 
 \section{Molecular bistable switch at synapse}\label{sec:molecular_switch}
 \rightHighlight{
@@ -307,13 +301,14 @@ synapse.
     \label{fig:lisman}
 }
 
-John Lisman hypothesised that a kinase and a phosphatase together
-(\Fig{fig:lisman}) can form a bistable switch which is stable against
-\emph{turnover}. \gls{camkii} and its phosphatase \gls{pp1} were identified as
-the hypothesised kinase and phosphatase. This chemical system had been
-extensively studied using computational models for over two decades
-\cite{sandstorm}. There is evidence that \gls{camkii} is bistable \emph{in
-vitro} conditions. 
+John Lisman hypothesised that a kinase and a phosphatase together can form a
+bistable switch immune to \emph{turnover}. \gls{camkii} and its phosphatase
+\Gls{pp1} were identified as the hypothesised kinase and phosphatase. This
+chemical system has been extensively studied using computational models for over
+two decades \cite{sandstorm}. There is some evidence that \gls{camkii} is
+bistable \emph{in vitro} conditions. Whether \gls{camkii} is bistable
+inside a living neuron is still an open question (see Box 2 for overview of
+\gls{camkii} properties at synapse.).
 
 % Bistable box
 \boxTexteven{Bistability in reaction network} {
@@ -333,8 +328,8 @@ vitro} conditions.
     point of view of an experimentalist, if you obverse a bistable system for
     very long time, you would almost always find it in either of its two stable
     states. Just like an electrical switch which you would almost always find in
-    either \texttt{ON} or \texttt{OFF} state (and rest of the time in transition
-    between \texttt{ON} and \texttt{OFF}).
+    either \texttt{ON} or \texttt{OFF} state (and rarely in transition between
+    \texttt{ON} and \texttt{OFF}).
 
     \vspace{3mm} \includegraphics[width=\linewidth]{./stability_noise.pdf} 
 
@@ -345,16 +340,15 @@ vitro} conditions.
     of stochastic bistable system as state transition diagram.  The arrows
     depict the probability of transition from one state to the other. In
     \textbf{C}, we simulate the system described in \textbf{B} with probability
-    of transition from A to B, and from B to A set to be 0.01. Note that each
-    time, this trajectory will be different but the average of many trajectories
-    will be equivalent to a deterministic bistable system.
+    of transition from A to B ($P(A\rightarrow B)$), and from B to A
+    ($P(B\rightarrow A)$) set equal to 0.01. 
 
-    Such stochastic bistable motif are commonplace in biology
-    \cite{ramakrishnan2008}, especially found in situations where cell has to
-    make a decision. One such motif is show below in both deterministic and
-    stochastic settings. There are three necessary conditions a network must
-    have to be able to show bistability: positive feedback, mechanism to filter
-    out small stimuli, and a mechanism to prevent explosions\cite{wilhelm}. 
+    Such bistable motif are commonplace in biology \cite{ramakrishnan2008},
+    especially found in situations where cell has to make a decision. One such
+    motif is show below in both deterministic and stochastic settings. There are
+    three necessary conditions a network must have to be able to show
+    bistability: positive feedback, mechanism to filter out small stimuli, and a
+    mechanism to prevent explosions\cite{wilhelm}. 
 
     \vspace{3mm}
     \begin{tikzpicture}[scale=1 , every node/.style={} ]
@@ -427,20 +421,23 @@ vitro} conditions.
 
 In our computational study of this pathway, we explored the effect of subunit
 exchange on \gls{camkii} pathway \cite{SinghAndBhalla2018}.  We found that the
-subunit exchange improves information retention capacity of \gls{camkii}.
-Individual \gls{camkii} acts as an leaky integrator of \gls{ca} activity (see
-Box 2.). With subunit exchange, the leaky integrator becomes less leaky and hold
-information for longer time. If many \gls{camkii} holoenzymes come together and
-form a cluster, then they give rise to a bistable switch
-(\Fig{fig:camkii_sync}). A synapse is likely to have many such clusters. We
-found subunit exchange synchronizes these distributed switch. That is multiple
-bistable switches act as a single but much more stable bistable switch. To
-summarise, we found the subunit-exchange makes \gls{camkii} molecule better at
-retaining information. 
+subunit exchange improves information retention capacity of \gls{camkii}. This
+add weightage to the idea that \gls{camkii} is \textit{the memory melecule}.
+Individual \gls{camkii} acts as leaky integrator of \gls{ca} activity (see Box
+2.). With subunit exchange, the leaky integrator becomes less leaky and hold
+information for longer time. When many \gls{camkii} holoenzymes come together
+and form a cluster then they give rise to a bistable switch
+(\Fig{fig:camkii_sync}). Such clusters have been observed in living neurons. We
+found subunit exchange synchronizes bistable activity of distributed clusters.
+That is multiple bistable switches act as a single but much more stable bistable
+switch. To summarise, we found the subunit-exchange makes \gls{camkii} molecule
+better at retaining information. 
 
-It is likely that \gls{camkii} is bistable in special micro-environments. To
-prove it, one needs to observe single molecule activity in synapse near surface
-of synapse which is a very challenging experiment.
+As we have mentioned earlier that there is currently no experimental evidence
+that \gls{camkii} is bistable at synapse. It is likely that \gls{camkii} is
+bistable in special micro-environments. To prove it, one needs to observe
+activity of \gls{camkii} clusters in synapse near the surface of the synapse
+which would be a very technically challenging experiment.
 
 \begin{figure*}[t!]
     \caption{ \textbf{(A)} (left) Three clusters of \gls{camkii} in a synapse
@@ -460,11 +457,12 @@ of synapse which is a very challenging experiment.
 \section{Conclusion}
 
 In this article, we have discussed why bistable motif is an attractive candidate
-for storing biological memories. Most support for this idea has came from
+for storing biological memories. Because bistable switches maintain their states
+for long time (remembering). Most support for this idea has came from
 computational studies. To really prove it, we need experimental data supporting
-this hypothesis. There is growing experimental evidence that synapse change in
+this hypothesis. There is now a growing experimental evidence that synapse change in
 \textit{all-or-none} manner, a finding which is consistent with this idea. Some
-studies claim that changes are graded i.e. synapse changes in step-wise manner
+other studies claim that changes are graded i.e. synapse changes in step-wise manner
 much like a \textbf{multi-stable} synapse. A multi-stable synapse is an ensemble
 of many bistable components. Whether \gls{camkii} is bistable in synapse (or in
 some part of it) is still an open question. So far there is no concrete evidence

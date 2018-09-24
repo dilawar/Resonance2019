@@ -16,8 +16,8 @@
     \node (a) {
         \begin{tikzpicture}[scale=1 , every node/.style={}]
             \node (x) {$X$};
-            \node[right=of x] (xsim) {$X^\sim$};
-            \node[right=of xsim] (xstar) {$X^*$};
+            \node[right=of x] (xsim) {X$^\sim$};
+            \node[right=of xsim] (xstar) {X$^*$};
 
             \draw[-Stealth] (x) -- (xsim);
             \draw[-Stealth, very thick] (xsim) -- (xstar);
@@ -40,21 +40,19 @@
     {
         \begin{tabular}{l l}
             \small Activation & \schemestart
-            $X$ \arrow{->[\footnotesize slow]} $X^\sim$ \arrow{->[\footnotesize fast]} $X^*$ 
+            X \arrow{->[\footnotesize slow]} X$^\sim$ \arrow{->[\footnotesize fast]} X$^*$ 
             \schemestop\label{reac:phospho} 
             \\
-            \small \textcolor{blue}{Deactivation} & \schemestart
-            \color{blue} $X^\sim$ + P \arrow{<->>} \color{blue} $X^\sim$P
+            \small \textcolor{blue}{Deactivation} & 
+            \schemestart \color{blue} X$^\sim$ + P \arrow{<->>} \color{blue} X$^\sim$P
                 \arrow{->} \color{blue} X+P
             \schemestop
             \\
             & \schemestart
-            \color{blue} $X^*$ + P \arrow{<->>} \color{blue}  $X^*$P \arrow{->}
+            \color{blue} X$^*$ + P \arrow{<->>} \color{blue}  X$^*$P \arrow{->}
                 \color{blue} X + P 
             \schemestop\label{reac:depospho} \\
-            \small Turnover & \schemestart
-            $X^*$ \arrow{->} $X$
-            \schemestop
+            \small Turnover & \schemestart X$^*$ \arrow{->} X \schemestop
         \end{tabular}
     };
 \end{tikzpicture}	
