@@ -55,7 +55,7 @@
 \end{abstract}
 
 \maketitle
-\monthyear{May 2018}
+\monthyear{Oct 2018}
 \artNature{GENERAL ARTICLE}
 
 \section{Introduction}\label{sec:intro}
@@ -73,19 +73,19 @@ s_{21}, s_{12},\ldots,s_{331})$ i.e., these connections were changed during my
 troubling encounter with Lalu. I sometimes recall this memory whenever I see a
 similar looking dog.
 
-\begin{figure}[!b] 
-    \caption{Memory formation and forgetting in brain. During formation of
+\begin{figure}[hb] 
+    \centering
+    \caption{Memory formation and forgetting. During formation of
         a memory, some synapses become stronger (larger black dots). 
         The longer you can maintain these connections, the longer you 
         can hold on to this memory.
-    }
-    \label{fig:engram}
-    \includegraphics[width=\linewidth]{engram.pdf} 
+    }\label{fig:engram}
+    \includegraphics[width=0.8\linewidth]{engram.pdf} 
 \end{figure}
 
 I can recall an experience as long as the set of synapses in which the
-particular experience was stored remains \emph{intact}. Therefore, our ability
-to remember is contingent on our brain's ability to keep its connections intact.
+particular experience was stored remains intact. Therefore, our ability to
+remember is contingent on our brain's ability to keep its connections intact.
 But on the other hand, our ability to learn depends on our brain's ability to
 change its connections. And here is the first challenge!
 
@@ -245,22 +245,22 @@ of \textbf{parsimony} which recommends to pick the simplest explanation.
 We still have two big problems hiding underneath. We have not considered the
 underlying biological hardware i.e. synapse in any detail where this biochemical
 network suppose to function. The first problem is chemical noise . For a
-biochemical system operating in very small volumes, effect of chemical noise can
+biochemical system operating in very small volume, effect of chemical noise can
 be very strong. \leftHighlight{The volume of a typical synapse is
 \SI{1e-20}{\cubic\meter}. At this volume, \SI{1}{\micro M} concentration is
 roughly equal to 6 molecules.} There are over 200 types of protein molecules in
-a typical synapse. Indeed, most of these protein molecules have few tens of
-molecules. The brain is always active and the chemical noise caused by the
-brain's background activity will surely turn some molecules of $X$ into $X^*$.
-Then due to auto-phosphorylation, sooner than later, all of the $X$ will be
-turned into $X^*$. We have created a very stable memory of nothing but
+a typical synapse. Indeed, most of these protein molecules found in synapse are
+as low as few tens. The brain is always active and the chemical noise caused by
+the brain's background activity will surely turn some molecules of $X$ into
+$X^*$.  Then due to auto-phosphorylation, sooner than later, all of the $X$ will
+be turned into $X^*$. We have created a very stable memory of nothing but
 background noise. This is highly undesirable!
 
 The second problem is \textit{turnover} i.e. old molecules are continuously
 degraded and being replaced by newly minted molecules. Let's assume that at the
 time of memory formation, we had 100 molecules of $X^*$ in the synapse. And
-let's also assume that on average, every day one new formed molecule (i.e. $X$)
-replaces an old one ($X^*$).  After 50 days, half of the synaptic strength is
+let's also assume that on average, every day one new formed molecule replaces an
+old one ($X^* \rightarrow X$).  After 50 days, half of the synaptic strength is
 gone! To counter this, we must have a \textit{refresh} mechanism by which the
 newly added molecule quickly changes its state according to the state of synapse
 i.e. newborn $X$ becomes $X^*$ if most molecules at synapses are $X^*$.
@@ -276,16 +276,16 @@ i.e. newborn $X$ becomes $X^*$ if most molecules at synapses are $X^*$.
 \includegraphics[width=\linewidth]{./fig_model_b.pdf}
 \end{figure}
 
-Effectively, we want a stable \texttt{ACTIVE} state (all $X$ are $X^*$) which is
-immune to turnover. We also don't want chemical noise to turn $X$ into $X^*$.
-We want a switch like behaviour i.e. if it is \texttt{OFF} or \texttt{ON} it
-tends to stay \texttt{OFF} or \texttt{ON}. If a few $X$ are turned into $X^*$ by
-background noise, we want them to be quickly turned back into $X$ by the
-phosphatase $P$. And if during memory formation, a significant portion of $X$
-has been turned into $X^*$ then we want that any $X^*$ deactivated into $X$ is
-quickly activated again into $X^*$. This system should operate like a switch
-which does not flip unless significant force is applied. These are called
-\textbf{bistable switch}es (See Box 1 for overview of bistability). 
+Effectively, we want a stable \texttt{ON} state (all $X$ are $X^*$) which is
+immune to turnover. We also want a stable \texttt{OFF} state so that noise does
+not turn $X$ into $X^*$.  We want a switch like behaviour i.e. if it is
+\texttt{OFF} or \texttt{ON} it tends to stay \texttt{OFF} or \texttt{ON}. If a
+few $X$ are turned into $X^*$ by background noise, we want them to be quickly
+turned back into $X$ by the phosphatase $P$. And if during memory formation, a
+significant portion of $X$ has been turned into $X^*$ then we want that any
+$X^*$ deactivated into $X$ is quickly activated again into $X^*$. This system
+should operate like a switch which does not flip unless significant force is
+applied. These are called \textbf{bistable switch}es (See Box 1). 
 
 Is there any evidence that bistable chemical reaction networks exist? Do they
 occur at all in living cells?  Bistability (and its close relative oscillations)
@@ -347,26 +347,28 @@ properties at synapse.).
     ($P(B\rightarrow A)$) set equal to 0.01. 
 
     Such bistable motif are commonplace in biology \cite{ramakrishnan2008},
-    especially found in situations where cell has to make a decision. One such
-    motif is show below in both deterministic and stochastic settings. There are
-    three necessary conditions a network must have to be able to show
-    bistability: positive feedback, mechanism to filter out small stimuli, and a
-    mechanism to prevent explosions\cite{wilhelm}. 
+    especially found in situations where cell has to make a decision or store
+    information (memory). One such motif is shown below in both deterministic
+    and stochastic settings. 
+
 
     \vspace{3mm}
     \begin{tikzpicture}[scale=1 , every node/.style={} ]
         \node[] (img) {
-                \includegraphics[width=6.5cm]{./strong_bis_naren_and_bhalla_87mm.pdf}
+                \includegraphics[width=6cm]{./strong_bis_naren_and_bhalla_87mm.pdf}
             };
-
-        \node[right=0mm of img, text width=6cm, align=justify] {
-                A bistable chemical system adapted from \cite{ramakrishnan2008}.
-                Species \texttt{b} and \texttt{c} catalyze their production
-                (positive feedback) and inhibits production of \texttt{a}.
-                \textbf{(below)} Two trajectories are shown in different
-                settings. (Left) System is deterministic; (right) System is stochastic.
-            };
+        \node[right=0mm of img.south east, anchor=south west, text width=6cm, align=justify] {
+            A bistable chemical system adapted from \cite{ramakrishnan2008}.
+            Species \texttt{b} and \texttt{c} catalyze their production
+            (positive feedback) and inhibits production of \texttt{a}.
+            \textbf{(below)} Two trajectories are shown in different
+            settings. (Left) System is deterministic; (right) System is stochastic.
+            There are three necessary conditions a network must have to be able to show
+            bistability: positive feedback, mechanism to filter out small stimuli, and a
+            mechanism to prevent explosion \cite{wilhelm}. 
+        };
     \end{tikzpicture}	
+
 }
 
 % CaMKII box.
