@@ -1,11 +1,12 @@
 \RequirePackage{luatex85,shellesc}
-\documentclass[crop, multi=false]{standalone}
+\documentclass[crop, multi=false, varwidth=11cm]{standalone}
 \usepackage{pgfplots}
 \usepackage{tabularx}
 \usepgfplotslibrary{units}
 
 \usepackage[sfdefault]{FiraSans}
 \usepackage[small]{eulervm}
+\usetikzlibrary{calc,positioning}
 
 \begin{document}
 
@@ -16,33 +17,43 @@
     , legend style={fill=none,draw=none,font=\footnotesize}
     , axis lines=left
     , try min ticks=3
+    , xlabel near ticks
 }
 
-\def\W{4.5cm}
+\def\W{6cm}
 \def\H{3cm}
 
-\begin{tabularx}{11cm}{X X}
+\begin{tabularx}{11cm}{X X} 
+    \textbf{A} 
+
 \begin{tikzpicture}[scale=1]
-    \begin{axis}[ xlabel=Time, x unit=au 
-        % , y unit = au
+    \begin{axis}[ xlabel=Time
         , ytick = \empty
+        , xtick=\empty
         , width=\W, height=\H
-        % , ymin = 1
-        , axis lines=none
+        % , axis lines=none
+        , axis y line=none
+        , ymax=2
+        , title = 1 bistable
         ]
-    \addplot [color=blue] gnuplot [ raw gnuplot ] {
+    \addplot [color=red] gnuplot [ raw gnuplot ] {
         set datafile separator ',';
         plot "./simulations/bistable_graded.csv" using 0:(column("switch0"));
     };
     \end{axis}
+    % \node[above left=0mm of current bounding box] {\textbf{A}};
 \end{tikzpicture}
 &
+\textbf{B}
+
 \begin{tikzpicture}[scale=1]
-    \begin{axis}[ xlabel=Time, x unit=au 
-        % , y unit = au
+    \begin{axis}[ xlabel=Time
         , ytick = \empty
+        , xtick=\empty
         , width=\W, height=\H
-        , axis lines=none
+        % , axis lines=none
+        , axis y line=none
+        , title = Multistable ($\sum$ bistables)
         ]
     \addplot [color=blue!30] gnuplot [ raw gnuplot ] {
         set datafile separator ',';
@@ -50,7 +61,7 @@
         plot "./simulations/bistable_graded.csv" using 0:(1.5+column("switch2"));
         plot "./simulations/bistable_graded.csv" using 0:(3+column("switch2"));
     };
-    \addplot [color=blue] gnuplot [ raw gnuplot ] {
+    \addplot [color=red] gnuplot [ raw gnuplot ] {
         set datafile separator ',';
         plot "./simulations/bistable_graded.csv" using
             0:((column("switch1")+column("switch2")+column("switch3")));
@@ -59,12 +70,12 @@
 \end{tikzpicture}
 \\
 \begin{tikzpicture}[scale=1]
-    \begin{axis}[ xlabel=Time, x unit=au 
-        % , y unit = au
+    \begin{axis}[ xlabel=Time
         , width=\W, height=\H
         , axis y line=none
-        % , ymin = 1
+        , xtick=\empty
         , title = Synaptic Strength
+        % , enlargelimits=true
         ]
     \addplot [color=blue] gnuplot [ raw gnuplot ] {
         set datafile separator ',';
@@ -76,13 +87,12 @@
 \end{tikzpicture}
 &
 \begin{tikzpicture}[scale=1]
-    \begin{axis}[ xlabel=Time, x unit=au 
-        % , y unit = au
-        % , ytick=\empty
+    \begin{axis}[ xlabel=Time
         , axis y line=none
         , width=\W, height=\H
-        % , ymin = 1
+        , xtick=\empty
         , title = Synaptic Strength
+        % , enlargelimits=true
         ]
     \addplot [color=blue] gnuplot [ raw gnuplot ] {
         set datafile separator ',';

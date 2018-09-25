@@ -47,7 +47,7 @@ def main( ):
     a2 = Bistable( )
     a3 = Bistable( )
     a4 = Bistable( )
-    N = 1000
+    N = 2000
     df = pd.DataFrame( )
     ax1 = plt.subplot(211)
     ax2 = plt.subplot(212)
