@@ -55,16 +55,17 @@
         , axis y line=none
         , title = Multistable ($\sum$ bistables)
         ]
-    \addplot [color=blue!30] gnuplot [ raw gnuplot ] {
+    \addplot [color=blue!10] gnuplot [ raw gnuplot ] {
         set datafile separator ',';
         plot "./simulations/bistable_graded.csv" using 0:(column("switch1"));
         plot "./simulations/bistable_graded.csv" using 0:(1.5+column("switch2"));
-        plot "./simulations/bistable_graded.csv" using 0:(3+column("switch2"));
+        plot "./simulations/bistable_graded.csv" using 0:(3+column("switch3"));
+        plot "./simulations/bistable_graded.csv" using 0:(4.5+column("switch4"));
     };
     \addplot [color=red] gnuplot [ raw gnuplot ] {
         set datafile separator ',';
         plot "./simulations/bistable_graded.csv" using
-            0:((column("switch1")+column("switch2")+column("switch3")));
+            0:((column("switch1")+column("switch2")+column("switch3")+column("switch4")));
     };
     \end{axis}
 \end{tikzpicture}

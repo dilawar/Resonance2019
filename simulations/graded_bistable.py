@@ -15,6 +15,8 @@ import numpy as np
 import random
 import pandas as pd
 
+random.seed( 10 )
+
 class Bistable( ):
 
     def __init__(self):
@@ -47,17 +49,18 @@ def main( ):
     a2 = Bistable( )
     a3 = Bistable( )
     a4 = Bistable( )
+    a5 = Bistable( )
     N = 2000
     df = pd.DataFrame( )
     ax1 = plt.subplot(211)
     ax2 = plt.subplot(212)
-    for i, a in enumerate([a1, a2, a3, a4]):
+    for i, a in enumerate([a1, a2, a3, a4, a5]):
         a.steps( int(N) )
         df[ 'switch%i' % i] = a.xs
 
     df.to_csv( 'bistable_graded.csv', index = False )
     ax1.plot( a1.xs )
-    ax2.plot( np.sum( [a2.xs, a3.xs, a4.xs], axis = 0) )
+    ax2.plot( np.sum( [a2.xs, a3.xs, a4.xs, a5.xs], axis = 0) )
     plt.savefig( '%s.png' % __file__ )
 
 if __name__ == '__main__':

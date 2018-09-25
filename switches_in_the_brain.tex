@@ -287,8 +287,8 @@ which does not flip unless significant force is applied. These are called
 
 Is there any evidence that bistable chemical reaction networks exist? Do they
 occur at all in living cells?  Bistability (and its close relative oscillations)
-are very common in biology (Why? What is the reason for their \emph{selection}
-by evolution?)); from cellular level to population levels. So it
+are very common in biology (What is the reason for their \emph{selection}
+by evolution?); from cellular level to population levels. So it
 won't be surprising if we discover bistable switches operating at syanpse as
 well. Indeed, various studies have shown that \gls{camkii} \emph{may} form a
 bistable switch in synapse.
@@ -312,7 +312,6 @@ inside a living neuron is still an open question (see Box 2 for overview of
 
 % Bistable box
 \boxTexteven{Bistability in reaction network} {
-
     \def\StateA{\tikz \node[circle, dashed, draw, inner sep=1pt] {\scriptsize
     \textsf{A}};}
     \def\StateB{\tikz \node[circle, dashed, draw, inner sep=1pt] {\scriptsize
@@ -322,14 +321,16 @@ inside a living neuron is still an open question (see Box 2 for overview of
     Life is remarkably stable even though it is made up of inherently noisy
     components. Bistable chemical networks are ubiquitous in biology. In
     bistable chemical networks, noisy components acts together to give rise to 
-    highly (bi)stable behaviour.
+    highly (bi)stable behaviour. \emph{Also note that even though the underlying
+    reactions are almost always reversible, the bistable switch is usually not
+    reversible.} Isn't it a neat way for taking decisions?
 
     A bistable system -- as its name implies -- has two stable states. From the
     point of view of an experimentalist, if you obverse a bistable system for
     very long time, you would almost always find it in either of its two stable
     states. Just like an electrical switch which you would almost always find in
     either \texttt{ON} or \texttt{OFF} state (and rarely in transition between
-    \texttt{ON} and \texttt{OFF}).
+    states).
 
     \vspace{3mm} \includegraphics[width=\linewidth]{./stability_noise.pdf} 
 
@@ -465,29 +466,36 @@ There is now a growing experimental evidence that synaptic size change in
 \textit{all-or-none} manner, a finding which is consistent with this idea. Some
 other studies claimed that changes are graded i.e. synapse changes in step-wise
 manner much like a \textbf{multi-stable} synapse. A multi-stable synapse is an
-additive ensemble of many bistable components. 
+additive ensemble of many bistable components
+(\Fig{fig:fig_bistable_multistable}).
 
 \begin{figure}[ht!]
     \centering
-    \caption{Bistable and multi-stable synapse.
-        \textbf{(A)} A bistable switch controlling the synaptic strength.
-    Synapse size changes in \textit{all-or-none} fashion. \textbf{(B)} A graded
-synapse (blue) which changes its size in step-wise manner. A multi-stable mechanism can explain it. Note that multi-stable }
+    \caption{\textit{All-or-note} v/s graded synapse and mechanism which may
+        give rise to them. \textbf{(A)} A bistable mechanism (red) controlling the 
+        synaptic strength.  Synapse size changes in \textit{all-or-none}
+        fashion. \textbf{(B)} A multi-stable mechanism (red) gives rise to a graded synapse (blue) 
+        which changes its size in step-wise manner. Note that a multi-stable
+        mechanism can be constructed by adding multiple bistable switches (4
+        bistable switches shown in light blue in blue are used in this case).
+    }
     \includegraphics[width=\linewidth]{./bistable_multistabe_synapse.pdf}
-\label{fig:fig_bistable_multistable}
+    \label{fig:fig_bistable_multistable}
 \end{figure}
 
+Whether \gls{camkii} is bistable in the synapse is still an open question.
+Neither there is any concrete evidence that it is, nor it has been ruled out
+that it is not in some special section of synapse -- especially near the
+surface. Our key focus was to argue why bistable mechanism is a good solution to
+the problem of storing memory. Even if \gls{camkii} turns out to be not bistable
+at synapse, there could be other unknown mechanisms which can give rise to
+bistability. Given that bistable chemical motifs are widespread, it is
+reasonable to believe that there are indeed switches in our brain -- much like
+flip-flops in your pen-drives and memory cards -- which are evolved to keep our
+memories safe from the onslaught of time and noise.
 
-Whether \gls{camkii} is bistable in synapse (or in some part of it) is still an
-open question. So far there is no concrete evidence that it is. There could be
-other still unknown mechanisms which can give rise to bistability. Given that
-bistable chemical motifs are widespread, it is reasonable to believe that there
-are indeed switches in our brain -- much like flip-flops in your pen-drives and
-memory cards -- which are evolved to keep our memories safe from the onslaught
-of time and noise.
-
-\section*{Acknowledgements}
-I'd like to thank Somya Mani for helpful suggestions on the manuscript.
+\section*{Acknowledgements} I'd like to thank Somya Mani and Bhanu Priya for
+helpful suggestions on the manuscript.
 
 \correspond{
     Bhalla Lab,
