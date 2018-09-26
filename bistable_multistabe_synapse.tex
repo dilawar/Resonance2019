@@ -1,0 +1,110 @@
+\RequirePackage{luatex85,shellesc}
+\documentclass[crop, multi=false, varwidth=11cm]{standalone}
+\usepackage{pgfplots}
+\usepackage{tabularx}
+\usepgfplotslibrary{units}
+
+\usepackage[sfdefault]{FiraSans}
+\usepackage[small]{eulervm}
+\usetikzlibrary{calc,positioning}
+
+\begin{document}
+
+\pgfplotsset{
+    , xtick align=center
+    , ytick align=center
+    , unit markings=parenthesis
+    , legend style={fill=none,draw=none,font=\footnotesize}
+    , axis lines=left
+    , try min ticks=3
+    , xlabel near ticks
+}
+
+\def\W{6cm}
+\def\H{3cm}
+
+\begin{tabularx}{11cm}{X X} 
+    \textbf{A} 
+
+\begin{tikzpicture}[scale=1]
+    \begin{axis}[ xlabel=Time
+        , ytick = \empty
+        , xtick=\empty
+        , width=\W, height=\H
+        % , axis lines=none
+        , axis y line=none
+        , ymax=2
+        , title = Single bistable
+        ]
+    \addplot [color=red] gnuplot [ raw gnuplot ] {
+        set datafile separator ',';
+        plot "./simulations/bistable_graded.csv" using 0:(column("switch0"));
+    };
+    \end{axis}
+    % \node[above left=0mm of current bounding box] {\textbf{A}};
+\end{tikzpicture}
+&
+\textbf{B}
+
+\begin{tikzpicture}[scale=1]
+    \begin{axis}[ xlabel=Time
+        , ytick = \empty
+        , xtick=\empty
+        , width=\W, height=\H
+        % , axis lines=none
+        , axis y line=none
+        , title = Multistable (Sum of bistables)
+        ]sum
+    \addplot [color=blue!10] gnuplot [ raw gnuplot ] {
+        set datafile separator ',';
+        plot "./simulations/bistable_graded.csv" using 0:(column("switch1"));
+        plot "./simulations/bistable_graded.csv" using 0:(1.5+column("switch2"));
+        plot "./simulations/bistable_graded.csv" using 0:(3+column("switch3"));
+        plot "./simulations/bistable_graded.csv" using 0:(4.5+column("switch4"));
+    };
+    \addplot [color=red] gnuplot [ raw gnuplot ] {
+        set datafile separator ',';
+        plot "./simulations/bistable_graded.csv" using
+            0:((column("switch1")+column("switch2")+column("switch3")+column("switch4")));
+    };
+    \end{axis}
+\end{tikzpicture}
+\\
+\begin{tikzpicture}[scale=1]
+    \begin{axis}[ xlabel=Time
+        , width=\W, height=\H
+        , axis y line=none
+        , xtick=\empty
+        , title = Synaptic Strength
+        % , enlargelimits=true
+        ]
+    \addplot [color=blue] gnuplot [ raw gnuplot ] {
+        set datafile separator ',';
+        set samples 40;
+        plot "./simulations/bistable_graded.csv" using 0:(2+column("switch0"))
+            smooth cspline;
+    };
+    \end{axis}
+\end{tikzpicture}
+&
+\begin{tikzpicture}[scale=1]
+    \begin{axis}[ xlabel=Time
+        , axis y line=none
+        , width=\W, height=\H
+        , xtick=\empty
+        , title = Synaptic Strength
+        % , enlargelimits=true
+        ]
+    \addplot [color=blue] gnuplot [ raw gnuplot ] {
+        set datafile separator ',';
+        set samples 200;
+        plot "./simulations/bistable_graded.csv" using
+        0:(2+(column("switch1")+column("switch2")+column("switch3")/3))
+            smooth cspline;
+    };
+    \end{axis}
+\end{tikzpicture}
+\end{tabularx}
+
+\end{document}
+
