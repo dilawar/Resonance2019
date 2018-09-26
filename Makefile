@@ -4,4 +4,4 @@ figures :
 	cd figures && make
 
 switches_in_the_brain.pdf : ./switches_in_the_brain.tex figures
-	latexmk -latex="pdflatex --shell-escape %O %S" $<
+	latexmk -silent -pdf $<
