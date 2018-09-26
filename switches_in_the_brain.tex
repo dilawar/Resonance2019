@@ -1,8 +1,5 @@
-\RequirePackage{luatex85,shellesc}
 \documentclass[]{resonance}
 \usepackage{pgf,tikz}
-\usepackage{tikzsymbols}
-\usepackage[breakable]{tcolorbox}
 \usepackage{nameref}
 \usepackage{pgfplots}
 \usepackage{grffile}
@@ -20,6 +17,17 @@
 
 \usepackage[acronym]{glossaries}
 \input{glossaries}
+\usepackage{xcolor}
+
+\usepackage[]{hyperref}
+\hypersetup{
+    colorlinks,
+    linkcolor={red!50!black},
+    citecolor={blue!50!black},
+    urlcolor={blue!80!black}
+}
+\urlstyle{rm}
+
 
 \newcommand\Fig[1]{\textit{Figure~\ref{#1}}}
 \newcommand\TT[1]{\texttt{#1}}
@@ -33,16 +41,13 @@
 \maketitle
 
 % Author info here
-\authorIntro{
-    \includegraphics[width=2cm]{./dilawar.jpg}\\
+\authorIntro{\includegraphics[width=2cm]{./dilawar.jpg}\\
     Dilawar Singh is currently a graduate student at National Center for
     Biological Sciences (NCBS), Bengaluru. His hobby is to convince people to
     move to open-source softwares to live happily ever after.
 }
 
-
 \begin{abstract}
-
     We forget often. But we remember some memories as long as we live.
     This means that our brain is capable of protecting memories for years.
     This is a remarkable feat given that the \emph{biochemical hardware}
@@ -51,7 +56,6 @@
     biochemical mechanisms may overcome them? This article explores a major
     hypothesis that molecular switches may be behind our remarkable ability to
     remember for a lifetime.
-
 \end{abstract}
 
 \maketitle
@@ -90,10 +94,8 @@ But on the other hand, our ability to learn depends on our brain's ability to
 change its connections. And here is the first challenge!
 
 \subsection{Learning quickly v/s forgetting slowly, a zero-sum game}\label{subsec:zero_sum} 
-\leftHighlight{
-    \includegraphics[]{./foget_remember.pdf}
-    Ability to change (plasticity) is good for learning, but bad for remembering.
-}
+\leftHighlight{\includegraphics[]{./foget_remember.pdf}
+Ability to change (plasticity) is good for learning, but bad for remembering.}
 
 For $M_\text{Lalu}$ (or any other memory) to remain intact, each synapse which
 participated in its formation (i.e., $s_{10}, s_{21}, s_{12} \ldots$) should
@@ -108,7 +110,7 @@ synaspe), it will be good at learning new experiences but won't be able to
 retain them for long. Plastic synapse forgets easily.  We know that we not only
 remember for long time, we are also capable of learning quickly. And not just
 us, many other animals are quick to learn. Honey bees can learn the location of
-food after one encounter with food source such a flowers. Indeed, a good memory
+food only after encounter with food source such as flowers. Indeed, a good memory
 system is the one which learns as quickly as possible from rewarding or painful
 experiences and forgets as slowly as possible. Forgetting and remembering are
 two sides of the same coin. They are conflicting demands i.e., improving one
@@ -127,13 +129,15 @@ reference book to find a topic. Our brain, on the other hand, is very unlikely
 to have such an indexing mechanism. 
 
 We recall when we are provided with \textit{cues}. For example, when you see
-some part of a familiar person in a wedding album -- while the rest of the
-person may be hidden behind others -- you could easily identify the person.
-Many other memories of that person will also be recalled. A famous class of
-recurrent neural network popularly known as Hopfield network can do just the
-same as shown in \Fig{fig:hopfield}.
+some part of a familiar person in a wedding album you could easily identify the
+person even though most of the person is hidden behind others.  Many other
+memories of that person will also be recalled. A famous class of recurrent
+neural network popularly known as Hopfield network can do just the same as shown
+in \Fig{fig:hopfield}.
+\rightHighlight{Put simply, recurrent networks have \textit{loops}, usually from
+output to input.}
 
-\begin{figure}[!hb]
+\begin{figure}[!b]
     \centering
     \caption{Hopfield network with 100 spiking neurons. These \emph{recurrent} 
         configurations give rise to interesting brain-like
@@ -160,7 +164,7 @@ to advise the reader to be skeptical by noting the following:
         ignore rich local computations which can be accomplished by branches of
         these neurons called \textit{dendrites}.
     \item  There is no evidence that neurons make such dense recurrent
-        connections. However some studies have shown that Hopfield network can
+        connections. However, some studies have shown that Hopfield network can
         work with very sparse recurrent connections as well.
     \item Activity in these networks does not match usually observed activity 
         in the primate brain during memory-recall experiments.
@@ -173,7 +177,9 @@ solutions must be tested under the constraints imposed by biology.}
 Nonetheless, these networks provide us with a framework to concretely think
 about the problem of memory storage and recall. We learn a great deal about a
 problem by pointing out the limitations and failures of models which describe
-it. Hopfield network has properties which will sound very natural to us. Can you
+it. 
+
+Hopfield network has properties which will sound very natural to us. Can you
 store as many memories as you like in these networks? No. There is an upper
 limit. Adding more patterns over maximum limit causes distortion in memories.
 When a cue is given, the network no longer fetches the right pattern. It often
@@ -240,21 +246,21 @@ different from P. This adds another layer of control to an already complicated
 problem i.e.  forgetting is now controlled by another process. This requires one
 more explanation: how does this new mechanism controlling \textit{forgetting}
 work?  And philosophically -- if you care about it -- it violates the principle
-of \textbf{parsimony} which recommends to pick the simplest explanation.
+of \textbf{parsimony} which recommends picking the simplest explanation.
 
 We still have two big problems hiding underneath. We have not considered the
 underlying biological hardware i.e. synapse in any detail where this biochemical
-network suppose to function. The first problem is chemical noise . For a
+network suppose to function. The first problem is chemical noise. For a
 biochemical system operating in very small volume, effect of chemical noise can
 be very strong. \leftHighlight{The volume of a typical synapse is
-\SI{1e-20}{\cubic\meter}. At this volume, \SI{1}{\micro M} concentration is
+\SI{e-20}{\cubic\meter}. At this volume, \SI{1}{\micro M} concentration is
 roughly equal to 6 molecules.} There are over 200 types of protein molecules in
-a typical synapse. Indeed, most of these protein molecules found in synapse are
-as low as few tens. The brain is always active and the chemical noise caused by
-the brain's background activity will surely turn some molecules of $X$ into
-$X^*$.  Then due to auto-phosphorylation, sooner than later, all of the $X$ will
-be turned into $X^*$. We have created a very stable memory of nothing but
-background noise. This is highly undesirable!
+a typical synapse. Indeed, most proteins found in synapse has numbers as low as
+few tens. The brain is always active and the chemical noise caused by the
+brain's background activity will surely turn some molecules of $X$ into $X^*$.
+Then due to auto-phosphorylation, sooner than later, all $X$ will be turned into
+$X^*$. We have created a very stable memory of nothing but background noise.
+This is highly undesirable!
 
 The second problem is \textit{turnover} i.e. old molecules are continuously
 degraded and being replaced by newly minted molecules. Let's assume that at the
@@ -265,55 +271,8 @@ gone! To counter this, we must have a \textit{refresh} mechanism by which the
 newly added molecule quickly changes its state according to the state of synapse
 i.e. newborn $X$ becomes $X^*$ if most molecules at synapses are $X^*$.
 
-\begin{figure}[b!]
-\centering
-\caption{A hypothetical network which can solve the problem of chemical noise and
-    turnover with suitable parameters. The activation step is divided
-    into slow and fast components such that fluctuations caused by background
-    noise do not cause the system to activate itself. $X^*$ also partially activate
-    $X$ to $X^\sim$ to overcome \textit{turnover.}
-}\label{fig:model_bistable}
-\includegraphics[width=\linewidth]{./fig_model_b.pdf}
-\end{figure}
-
-Effectively, we want a stable \texttt{ON} state (all $X$ are $X^*$) which is
-immune to turnover. We also want a stable \texttt{OFF} state so that noise does
-not turn $X$ into $X^*$.  We want a switch like behaviour i.e. if it is
-\texttt{OFF} or \texttt{ON} it tends to stay \texttt{OFF} or \texttt{ON}. If a
-few $X$ are turned into $X^*$ by background noise, we want them to be quickly
-turned back into $X$ by the phosphatase $P$. And if during memory formation, a
-significant portion of $X$ has been turned into $X^*$ then we want that any
-$X^*$ deactivated into $X$ is quickly activated again into $X^*$. This system
-should operate like a switch which does not flip unless significant force is
-applied. These are called \textbf{bistable switch}es (See Box 1). 
-
-Is there any evidence that bistable chemical reaction networks exist? Do they
-occur at all in living cells?  Bistability (and its close relative oscillations)
-are very common in biology (What is the reason for their \emph{selection}
-by evolution?); from cellular level to population levels. So it
-won't be surprising if we discover bistable switches operating at syanpse as
-well. Indeed, various studies have shown that \gls{camkii} \emph{may} form a
-bistable switch in synapse.
-
-\section{Molecular bistable switch at synapse}\label{sec:molecular_switch}
-\rightHighlight{
-    \includegraphics[width=4cm]{./lisman_bistable_small.pdf}
-    Reaction in a bistable switch proposed by John Lisman. Modified
-    from \cite{lisman1985}. 
-    \label{fig:lisman}
-}
-
-Late John Lisman hypothesised that a kinase and a phosphatase together can form
-a bistable switch immune to \emph{turnover}. \gls{camkii} and its phosphatase
-\Gls{pp1} were identified as the hypothesised kinase and phosphatase. This
-chemical system has been extensively studied using computational models for over
-two decades \cite{sandstorm}. There is some evidence that \gls{camkii} is
-bistable \emph{in vitro} conditions. Whether \gls{camkii} is bistable inside a
-living neuron is still an open question (see Box 2 for overview of \gls{camkii}
-properties at synapse.).
-
 % Bistable box
-\boxTexteven{Bistability in reaction network} {
+\boxTextodd{Bistability in reaction network} {
     \def\StateA{\tikz \node[circle, dashed, draw, inner sep=1pt] {\scriptsize
     \textsf{A}};}
     \def\StateB{\tikz \node[circle, dashed, draw, inner sep=1pt] {\scriptsize
@@ -325,7 +284,7 @@ properties at synapse.).
     bistable chemical networks, noisy components acts together to give rise to 
     highly (bi)stable behaviour. \emph{Also note that even though the underlying
     reactions are almost always reversible, the bistable switch is usually not
-    reversible.} Isn't it a neat way for taking decisions?
+    reversible}. Isn't it a neat way to make a very decisive cell?
 
     A bistable system -- as its name implies -- has two stable states. From the
     point of view of an experimentalist, if you obverse a bistable system for
@@ -334,7 +293,8 @@ properties at synapse.).
     either \texttt{ON} or \texttt{OFF} state (and rarely in transition between
     states).
 
-    \vspace{3mm} \includegraphics[width=\linewidth]{./stability_noise.pdf} 
+    \vspace{3mm} 
+    \includegraphics[width=\linewidth]{./stability_noise.pdf} 
 
     In the figure above, \textbf{A} show a conceptual model of bistability.  The
     energy landscape of a bistable system has two minima (\StateA and \StateB),
@@ -351,13 +311,13 @@ properties at synapse.).
     information (memory). One such motif is shown below in both deterministic
     and stochastic settings. 
 
-
     \vspace{3mm}
+    \begin{center}
     \begin{tikzpicture}[scale=1 , every node/.style={} ]
         \node[] (img) {
                 \includegraphics[width=6cm]{./strong_bis_naren_and_bhalla_87mm.pdf}
             };
-        \node[right=0mm of img.south east, anchor=south west, text width=6cm, align=justify] {
+        \node[right=0mm of img.south east, anchor=south west, text width=6.3cm, align=justify] {
             A bistable chemical system adapted from \cite{ramakrishnan2008}.
             Species \texttt{b} and \texttt{c} catalyze their production
             (positive feedback) and inhibits production of \texttt{a}.
@@ -368,76 +328,87 @@ properties at synapse.).
             mechanism to prevent explosion \cite{wilhelm}. 
         };
     \end{tikzpicture}	
-
+\end{center}
 }
 
-% CaMKII box.
-\boxTextodd{\gls{camkii} at synapse: A brief overview of its properties and function} {
-    Among more than 2000 proteins found in brain, \gls{camkii} constitutes roughly
-    2\% of them all. Furthermore, it is enriched in the hippocampus -- a brain structure
-    necessary for memory formation. Indeed, \gls{camkii} is known to play essential
-    role in learning and memory. In experiments involving mice, deactivating
-    \gls{camkii} in any way has always resulted in impairment of memory formation
-    and learning. 
+\begin{figure}[!th]
+\centering
+\caption{A hypothetical network which can solve the problem of chemical noise and
+    turnover with suitable parameters. The activation step is divided
+    into slow and fast components such that fluctuations caused by background
+    noise do not cause the system to activate itself. $X^*$ also partially activate
+    $X$ to $X^\sim$ to overcome \textit{turnover.}
+}\label{fig:model_bistable}
+\includegraphics[width=7cm]{./fig_model_b.pdf}
+\end{figure}
 
-    \gls{camkii} molecule has interesting properties which makes it an
-    attractive candidate for storing information. 12 or 14 subunits of
-    \gls{camkii} make up one holoenzyme, usually arranged in dodecameric (top
-    view \tikz{  \foreach \i in {1,2,...,6} { \node[circle, fill=blue!50,
-            shift=(60*\i:1mm),inner sep=1pt] (b\i) at (0,0) {}; } }) or
-            tetradecameric form (top view \tikz{ \foreach \i in {1,2,...,7} {
-            \node[circle, fill=blue!50, shift=(360*\i/7:1mm),inner sep=1pt]
-    (b\i) at (0,0) {}; } }). \gls{camkii} structure is shown in (\textbf{A})
-    inset below (from Protein Data Bank (https://www.rcbs.org)).
+Effectively, we want a stable \texttt{ON} state (all $X$ are $X^*$) which is
+immune to turnover. We also want a stable \texttt{OFF} state so that noise does
+not turn $X$ into $X^*$.  We want a switch like behaviour i.e. if it is
+\texttt{OFF} or \texttt{ON} it tends to stay \texttt{OFF} or \texttt{ON}. If a
+few $X$ are turned into $X^*$ by background noise, we want them to be quickly
+turned back into $X$ by the phosphatase $P$. And if during memory formation, a
+significant portion of $X$ has been turned into $X^*$ then we want that any
+$X^*$ deactivated into $X$ is quickly activated again into $X^*$. This system
+should operate like a switch which does not flip unless significant force is
+applied. These are called \textbf{bistable switch}.
 
-    \includegraphics[width=13cm]{./camkii_properties.pdf}
+Is there any evidence that bistable chemical reaction networks exist? Do they
+occur at all in living cells?  Bistability (and its close relative oscillations)
+are very common in biology from cellular level (genetic switch) to population
+levels (predator-prey dynamics)?  What is the reason for their \emph{selection}
+by evolution? And what do they accomplish? Bistability, from one point of view,
+is an irreversible way of taking YES or NO decisions. A phage $\lambda$ virus
+can use them to decide if to remain dormant or become active; a cell can use
+them to decide whether to move to M phase from G1 phase or whether to enter
+apoptosis or not. From other point of view, bistability is a way to store 1 bit
+of memory (1 and 0, \texttt{ON} or \texttt{OFF}, \texttt{ACTIVE} or
+\texttt{INACTIVE}). Memory is older than brain! There are plenty of living
+organism without brain as we define them but I can't imagine a living organism
+without memory. So it won't be surprising if we discover bistable switches
+operating at syanpse as well. Indeed, various studies have shown that
+\gls{camkii} \emph{may} form a bistable switch in synapse.
 
-    \textbf{(A)} Summary of \gls{camkii} pathway of. Upon its influx into
-    synapse, \gls{ca} binds to \gls{cam} and create a complex \gls{cacam}.
-    \gls{cacam} binds to \gls{camkii} and phosphorylate it.  \gls{camkii} is
-    dephosphorylated by \gls{pp1}. \textbf{(B)} Subunit exchange
-    between two holoenzymes i.e. a fully active \gls{camkii} holoenzyme can
-    loose an \textit{ACTIVE} subunit which can be picked up by another
-    holoenzyme which becomes partially active. 
-    
-    First step of \gls{camkii} activation is very slow for it requires binding
-    of two \gls{cacam} simultaneously. Once a subunit has been activated (red
-    circle), phosphorylation of its neighbours requires binding of only one
-    \gls{cacam} and therefore further phosphorylation proceeds at much faster
-    rate.  Note that the first very slow step can be overcome by subunit
-    exchange when an inactive holoenzyme picks up an active subunit released by
-    other holoenzyme. Therefore subunit exchange helps in spreading \gls{camkii}
-    activation. 
 
-    \textbf{\gls{camkii} integrates \gls{ca} signal} A single \gls{camkii}
-    holoenzyme acts as a leaky integrator of \gls{ca} activity i.e. it sums up
-    \gls{ca} activity in time and also decays with a time-constant (leaky). See
-    \textbf{(B)} to compare behaviour of three integrators of calcium activity
-    ($x$): a non-leaky integrator and two leaky integrators with small and large
-    amount of leakage.  Mathematically, it is similar to a leaky capacitor if we
-    model \gls{ca} activity as applied current and \gls{camkii} activity as
-    voltage across capacitor.  Integrators are useful when you want to
-    accumulate \emph{enough} information about $x$ before taking a decision e.g.
-    a plant can \emph{decide} to flower or shed leaves only if integration of
-    moisture in air and/or temperature during the day crosses a threshold value.
+\section{Molecular bistable switch at synapse}\label{sec:molecular_switch}
 
-} % box
+Late John Lisman hypothesised that a kinase and a phosphatase together can form
+a bistable switch immune to \emph{turnover}. \gls{camkii} and its phosphatase
+\Gls{pp1} were identified as the hypothesised kinase and phosphatase. This
+chemical system has been extensively studied using computational models for over
+two decades \cite{sandstorm}. There is some evidence that \gls{camkii} is
+bistable \emph{in vitro} conditions. Whether \gls{camkii} is bistable inside a
+living neuron is still an open question (see Box 2 for overview of \gls{camkii}
+properties at synapse.).
+
+\leftHighlight{
+    \includegraphics[width=4cm]{./lisman_bistable_small.pdf}
+    Reaction in a bistable switch proposed by John Lisman. Modified
+    from \cite{lisman1985}.
+    \label{fig:lisman}
+}
 
 In our computational study of this pathway, we explored the effect of subunit
-exchange on \gls{camkii} pathway \cite{SinghAndBhalla2018}.  We found that the
-subunit exchange improves information retention capacity of \gls{camkii}. This
-adds weightage to the idea that \gls{camkii} is \textit{the memory melecule}.
-Individual \gls{camkii} acts as leaky integrator of \gls{ca} activity (see Box
-2.). With subunit exchange, the leaky integrator becomes less leaky and hold
-information for longer time. When many \gls{camkii} holoenzymes come together
-and form a cluster then they give rise to a bistable switch
-(\Fig{fig:camkii_sync}). Such clusters have been observed in experiments. We
-found that subunit exchange synchronizes bistable activity of distributed
-clusters.  That is multiple bistable switches act as a single but much more
-stable bistable switch. To summarise, we found the subunit-exchange makes
-\gls{camkii} molecule better at retaining information.
+exchange on \gls{camkii} pathway \cite{SinghAndBhalla2018} (See Box 2.). A
+\gls{camkii} molecule is made up to 12 to 14 subunits which it can exchange with
+other molecules. This makes \gls{camkii} a rare molecule, perhaps unique.
+Subunit exchange enables \gls{camkii} to act at position away from its current
+location. Due to its unique properties, \gls{camkii} is often called \emph{the
+memory molecule}.
 
-\begin{figure*}[t!]
+We found that the subunit exchange improves information retention capacity of
+\gls{camkii}. Individual \gls{camkii} acts as leaky integrator of \gls{ca}
+activity (see Box 2.). With subunit exchange, the leaky integrator becomes less
+leaky, therefore maintains its active state for longer time.  Many \gls{camkii}
+holoenzymes often come together and form a cluster, then they give rise to a
+bistable switch (\Fig{fig:camkii_sync}). Such clustering by various molecules
+have been observed in experiments and is now thought to play a very important
+role. We found that subunit exchange synchronizes bistable activity of
+distributed clusters. That is, multiple bistable switches act as a single but
+much more stable bistable switch. In nutshell, we found the subunit exchange
+makes \gls{camkii} molecule better at retaining information.
+
+\begin{figure*}[]
     \caption{ \textbf{(A)} (left) Three clusters of \gls{camkii} in a synapse
         . (Right) This system ability to hold memories increases exponentially
         with system size. 52 holoenzymes can keep the memory intact roughly for
@@ -452,20 +423,19 @@ stable bistable switch. To summarise, we found the subunit-exchange makes
 
 
 % References section
-\section{Conclusion}
-
-In this article, we have discussed why bistable motif is an attractive candidate
-for storing biological memories. They are ubiquitous in biology and are natural
-solution to the problem of memory maintenance under chemical noise and turnover.
-We have also discussed a potential pathways (\gls{camkii}) which may be bistable
-at synapse. Now let's put all of this to a reality check. Let's assume that
-bistables mechanism exists at synapse. We know that size of a synapse is tightly
-correlated with its strength. That means we can observe synapse size as the
-proxy of its strength. If we observe synapse for long time and record its size
-continuously, what would we observe? If the distribution of size is bimodal (two
-peaks) than its a strong suggestion that underlying mechanism is bistable. More
-strongly, if the underlying mechanism is bistable, then I \emph{must} observe a
-bimodal distribution.
+\section{Conclusion} In this article, we have discussed why bistable motif is an
+attractive candidate for storing biological memories. They are ubiquitous in
+biology and are natural solution to the problem of memory maintenance under
+chemical noise and turnover.  We have also discussed a potential pathway
+(\gls{camkii}) which may be bistable at synapse. Now let's put all of this to a
+reality check. Let's assume that bistables mechanism exists at synapse. If the
+underlying mechanism is bistable, then I \emph{must} observe a bimodal
+distribution. We know that size of a synapse is tightly correlated with its
+strength. That means we can observe synapse size as the proxy of its strength.
+If we observe synapse for long time and record its size continuously, what would
+we observe for our hypothesis to be correct?  If the distribution of size is
+bimodal (two peaks) than it is a strong suggestion (not a proof!) that
+underlying mechanism is bistable. 
 
 There is now growing experimental evidence that synaptic size change in
 \textit{all-or-none} manner, a finding which is consistent with this idea. Some
@@ -476,31 +446,85 @@ synapse is an additive ensemble of many bistable components
 
 \begin{figure}[ht!]
     \centering
-    \caption{\textit{All-or-note} v/s graded synapse and mechanism which may
+    \caption{\textit{All-or-none} v/s graded synapse and mechanism which may
         give rise to them. \textbf{(A)} A bistable mechanism (red) controlling the 
-        synaptic strength.  Synapse size changes in \textit{all-or-none}
-        fashion. \textbf{(B)} A multi-stable mechanism (red) gives rise to a graded synapse (blue) 
-        which changes its size in step-wise manner. Note that a multi-stable
-        mechanism can be constructed by adding multiple bistable switches (4
-        bistable switches shown in light blue in blue are used in this case).
+        synaptic strength (blue). Synaptic strength changes in \textit{all-or-none}
+        fashion. \textbf{(B)} A multi-stable mechanism (red) gives rise to a
+        graded synapse (blue). Synaptic strength changes in step-wise manner. Note that 
+        a multi-stable mechanism can be constructed by adding multiple bistable
+        switches. In this case, 4 bistable switches were used (shown in light
+        blue in background. Red curve is algebraic sum.).
     }
     \includegraphics[width=\linewidth]{./bistable_multistabe_synapse.pdf}
     \label{fig:fig_bistable_multistable}
 \end{figure}
 
-Whether \gls{camkii} is bistable in the synapse is still an open question.
-Neither there is any concrete evidence that it is nor it has been ruled out that
-it is not, especially near the membrane. Our aim in this article was to argue
-why bistable mechanism is a good solution to the problem of storing memory for
-long time. Even if \gls{camkii} turns out to be not bistable at synapse, there
-could be other unknown mechanisms which can give rise to bistability. Given that
-bistable chemical motifs are widespread, it is reasonable to suggest that there
-are indeed switches in our brain -- much like flip-flops in the digital memory
-card of your phone -- which are evolved to keep our memories safe from the
-onslaught of time and noise.
 
-\section*{Acknowledgements} I'd like to thank Somya Mani and Bhanu Priya for
-helpful suggestions on the manuscript.
+Whether \gls{camkii} is bistable in the synapse is still an open question;
+neither there is any concrete evidence that it is nor it has been ruled out that
+it is not, especially near the membrane. Our aim in this article was to point
+out why bistable mechanism is a viable solution to the problem of storing memory
+for long time. Even if \gls{camkii} turns out not to be bistable at synapse,
+there could still be other mechanisms which are bistables -- a few of them have
+been proposed. Given that bistable chemical motifs are widespread, it is
+reasonable to suggest that there are indeed switches in our brain -- much like
+flip-flops in the digital memory card of your phone -- which are evolved to keep
+our memories safe from the onslaught of time and noise.
+\rightHighlight{
+Simulations presented in the article are available at \url{https://gitlab.com/dilawar/Resonance2018}.
+}
+
+
+% CaMKII box.
+\boxTexteven{\gls{camkii} at synapse: A brief overview} {
+    Among more than 2000 proteins found in brain, \gls{camkii} constitutes
+    roughly 2\% of them all. It is enriched in the hippocampus -- a brain
+    structure necessary for memory formation. Indeed, \gls{camkii} is known to
+    play essential role in learning and memory. In experiments involving mice,
+    deactivating \gls{camkii} in any way has always resulted in impairment of
+    memory formation and learning. 
+
+    \gls{camkii} molecule has interesting properties which makes it an
+    attractive candidate for storing information. It is unique among proteins
+    for its dodecameric/tetradecameric structure (A, structure from Protein Data Bank),
+    its ability to exchange part of it with others (B) and its complex response
+    to calcium signal.  Usually it acts as a integrator of calcium activity in
+    synapse (C).
+
+    \includegraphics[width=13cm]{./camkii_properties.pdf}
+
+    \textbf{(A)} Summary of \gls{camkii} pathway of. Upon its influx into
+    synapse, \gls{ca} binds to \gls{cam} and create a complex \gls{cacam}.
+    \gls{cacam} binds to \gls{camkii} and phosphorylate it's subunit (red
+    balls). \gls{camkii} is dephosphorylated by \gls{pp1}. \textbf{(B)} Subunit
+    exchange between two holoenzymes i.e. a fully active \gls{camkii} holoenzyme
+    can lose an \textit{ACTIVE} subunit which can be picked up by another
+    holoenzyme which becomes partially active. 
+    
+    Activation of \gls{camkii} requires two steps: the first step is very slow
+    for it requires binding of two \gls{cacam} simultaneously. Once a subunit
+    has been activated (red ball), phosphorylation of its neighbours requires
+    binding of only one \gls{cacam} and therefore second step proceeds at  much
+    faster rate.  Note that the first very slow step can be overcome by subunit
+    exchange when an inactive holoenzyme picks up an active subunit released by
+    other holoenzyme. Thus subunit exchange helps in spreading \gls{camkii}
+    activation. 
+
+    \textbf{\gls{camkii} integrates \gls{ca} signal} A single \gls{camkii}
+    holoenzyme acts as a leaky integrator of \gls{ca} activity i.e. it sums up
+    \gls{ca} activity in time. And it also decays with a time-constant (leaky).
+    See \textbf{(B)} to compare behaviour of three integrators of calcium
+    activity ($x$): a non-leaky integrator and two leaky integrators with small
+    and large amount of leakage. Mathematically, it is similar to a leaky
+    capacitor charged by current source. Integrators are useful when you want to
+    accumulate \emph{enough} information about something (say $x$) before taking
+    a decision e.g.  a plant can \emph{decide} to flower or shed leaves only if
+    integration of moisture in air and/or temperature during the day crosses a
+    threshold value.
+} % box
+
+\section*{Acknowledgements} I'd like to thank Somya Mani, Bhanu Priya and Mukund
+Thattai for helpful suggestions on the manuscript. 
 
 \correspond{
     Bhalla Lab,

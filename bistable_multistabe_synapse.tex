@@ -34,7 +34,7 @@
         % , axis lines=none
         , axis y line=none
         , ymax=2
-        , title = 1 bistable
+        , title = Single bistable
         ]
     \addplot [color=red] gnuplot [ raw gnuplot ] {
         set datafile separator ',';
@@ -53,8 +53,8 @@
         , width=\W, height=\H
         % , axis lines=none
         , axis y line=none
-        , title = Multistable ($\sum$ bistables)
-        ]
+        , title = Multistable (Sum of bistables)
+        ]sum
     \addplot [color=blue!10] gnuplot [ raw gnuplot ] {
         set datafile separator ',';
         plot "./simulations/bistable_graded.csv" using 0:(column("switch1"));

@@ -9,20 +9,21 @@
 \usepackage[sfdefault]{FiraSans}
 \usepackage[small]{eulervm}
 
+\setcompoundsep{8mm}
+\setarrowoffset{3pt}
+
 \begin{document}
-
 \begin{tikzpicture}[scale=1 , every node/.style={} ]
-
     \node (a) {
         \begin{tikzpicture}[scale=1 , every node/.style={}]
-            \node (x) {$X$};
+            \node (x) {X};
             \node[right=of x] (xsim) {X$^\sim$};
             \node[right=of xsim] (xstar) {X$^*$};
 
             \draw[-Stealth] (x) -- (xsim);
             \draw[-Stealth, very thick] (xsim) -- (xstar);
 
-            \draw[-Circle] (xstar) edge[in=90, out=120] ([xshift=8mm]xsim);
+            \draw[-Circle] (xsim) edge[in=90, out=90] ([xshift=-8mm]xstar);
 
             % desphospho
             \draw[-Stealth, thick, blue] (xsim) to[bend left] (x);
@@ -30,13 +31,12 @@
 
             \path (xstar) -- (x) node[blue, midway, below=5mm] {\footnotesize P};
 
-            % Arrow above.
-            \draw[dotted, -Circle] (xstar) edge[out=110, in=90] ([xshift=8mm]x);
+            \draw[dotted,-latex] (xstar) to[bend right, sloped, above, midway] 
+                node {\scriptsize Turnover} (x);
             
         \end{tikzpicture}	
     };
-
-    \node[below=1mm of a] (b)
+    \node[above=0mm of a] (b)
     {
         \begin{tabular}{l l}
             \small Activation & \schemestart
