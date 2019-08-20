@@ -4,18 +4,18 @@
 \usepackage{pgfplots}
 \usepgfplotslibrary{units}
 \usetikzlibrary{calc,positioning}
-\usepackage[sfdefault]{FiraSans}
+\renewcommand\familydefault{\sfdefault}
 
 \begin{document}
 
 \begin{tikzpicture}[baseline, scale=1 , every node/.style={} ]
-    \node[label=north west:\bf{A}] (a) {
+    \node[label=north west:\bf{(i)}] (a) {
             \includegraphics[width=50mm]{./camkii_pp1_switch_level1_detail.pdf}
         };
     \node[below=-15mm of a.south west, anchor=north west, ] (b) {
         \includegraphics[width=1.35cm]{./camkii_pdb.png}
         };
-    \node[right=of a.north east, anchor=north west, label=north west:\bf{B}
+        \node[right=of a.north east, anchor=north west, label=north west:\bf{(ii)}
         , text width = 55mm
         ] (c) {
         \includegraphics[width=50mm]{./camkii_subunit_exchage.pdf}

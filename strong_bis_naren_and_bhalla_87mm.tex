@@ -74,9 +74,10 @@
 
     % credit
     % \node[above=1.5cm of a] {\footnotesize Ramakrishnan and Bhalla, PLOSB 2008};
+    \node at (current bounding box.north west) {(i)};
 \end{tikzpicture}
 
-\vspace{-3mm}
+\vspace{-1mm}
 \def\W{4.5}
 \def\H{2.5}
 % \begin{tabular}{p{4.3cm} p{4.3cm}}
@@ -87,7 +88,7 @@
         , xlabel = Time
         , width = \W cm, height = \H cm
         , enlargelimits = true
-        , title = {\small Deterministic}
+        , title = {\scriptsize Deterministic}
         ]
     \addplot+ [color=blue, no marks, very thick] gnuplot [ raw gnuplot ] {
         set datafile separator ',';
@@ -99,6 +100,7 @@
     };
     \legend{c, b}
     \end{axis}
+    \node at ([shift=(-45:3mm)]current bounding box.north west) {(ii)};
 \end{tikzpicture}
 \begin{tikzpicture}[scale=1 ]
     \begin{axis}[ 
@@ -106,7 +108,7 @@
         % , ylabel=Conc
         , width = \W cm, height = \H cm
         , enlargelimits = true
-        , title = {\small Stochastic}
+        , title = {\scriptsize Stochastic}
         ]
     \addplot+ [color=blue, no marks, opacity=0.8] gnuplot [ raw gnuplot ] {
         set datafile separator ',';
@@ -118,6 +120,7 @@
     };
     \legend{c, b}
     \end{axis}
+    \node at ([shift=(-45:3mm)]current bounding box.north west) {(iii)};
 \end{tikzpicture}
 % \end{tabular}
 \end{document}

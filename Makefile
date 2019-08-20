@@ -12,5 +12,5 @@ switches_in_the_brain.pdf : ./switches_in_the_brain.tex engram.pdf \
     ./strong_bis_naren_and_bhalla_87mm.pdf \
     ./camkii_properties.pdf \
     ./foget_remember.pdf
-	latexmk -latex="pdflatex --shell-escape %O %S" $<
+	pdflatex --shell-escape $<
 
