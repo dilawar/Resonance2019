@@ -428,7 +428,7 @@ The real world capacitors are \emph{leaky} -- they leak charge and information
 is lost after some time. So devices which use them to store information has to
 periodically recharge these capacitors.
 
-\begin{figure*}[]
+\begin{figure}[]
     \centering
     \caption{ \textbf{(A)} (left) Three clusters of \gls{camkii} in a synapse
         . (right) This system's ability to hold memories increases exponentially
@@ -442,7 +442,8 @@ periodically recharge these capacitors.
     \framebox{
         \includegraphics[width=0.95\linewidth]{./bistable/Fig5/figure_sync_114mm.pdf}
     }
-\end{figure*}
+    \vspace{3mm}
+\end{figure}
 
 Like a capacitor, \gls{camkii} also integrates. It integrates \gls{ca} activity
 i.e., $[CaMKII]=\int [Ca]\; dt$.  By measuring \gls{camkii} activity, one can
@@ -453,15 +454,23 @@ retain information is bounded by this leak -- it roughly last a minute.
 We found that the subunit exchange improves information retention capacity of
 \gls{camkii}. Individual \gls{camkii} acts as leaky integrator of \gls{ca}
 activity (see \textit{Box 2}). With subunit exchange, the leaky integrator
-becomes less leaky because of cooperation among them. As a result, it maintains
-its active state for a longer time. Many \gls{camkii} holoenzymes often come
-together and forms a cluster giving rise to a bistable switch
-(\Fig{fig:camkii_sync}). Such clustering by various molecules have been observed
-in experiments and is now thought to play a very important role. We found that
-subunit exchange synchronizes bistable activity of distributed clusters. That
-is, multiple bistable switches act as a single but much more stable bistable
-switch. In nutshell, we found the subunit exchange makes \gls{camkii} molecule
-better at retaining information.
+becomes less leaky because of cooperation among holoenzymes. An active
+holoenzyme can help its neighbour remain active for a longer period by
+exchanging active subunits with it. As a result, a \gls{camkii} close to an
+active \gls{camkii} can retain its active state for a longer time.
+
+Moreover, \gls{camkii} holoenzymes often come together and forms a cluster. The
+behaviour of a cluster could be very different than the behaviour of individuals
+in it (\emph{emergent property}). \leftHighlight{The behaviour of a
+school of fish could be very different from any fish in it.\linebreak
+\qrcode[height=2cm]{https://youtu.be/Y-5ffl5_7AI} } The clustering of
+\gls{camkii} give rise to a bistable switch (\Fig{fig:camkii_sync}). Such
+clustering by various molecules have been observed in experiments and is now
+thought to play a very important role. We found that subunit exchange
+synchronizes bistable activity of distributed clusters. That is, multiple
+bistable switches act as a single but much more stable bistable switch. In
+nutshell, we found the subunit exchange makes \gls{camkii} molecule better at
+retaining information.
 
 
 % CaMKII box.
@@ -515,6 +524,23 @@ better at retaining information.
 
 } % box
 
+\begin{figure}[h!]
+    \centering
+    \caption{\textit{All-or-none} v/s graded synapse and mechanism which may
+        give rise to them. \textbf{(A)} A bistable mechanism (red) controlling the 
+        synaptic strength (blue). Synaptic strength changes in \textit{all-or-none}
+        fashion. \textbf{(B)} A multi-stable mechanism (red) gives rise to a
+        graded synapse (blue). Synaptic strength changes in a step-wise manner. Note that 
+        a multi-stable mechanism can be constructed by adding multiple bistable
+        switches. In this case, 4 bistable switches were used (shown in light
+        blue in background. Red curve is the algebraic sum.).
+    }
+    \framebox{
+        \includegraphics[width=0.9\linewidth]{./bistable_multistabe_synapse.pdf}
+    }
+    \label{fig:fig_bistable_multistable}
+    \vspace{2mm}
+\end{figure}
 
 
 % References section
@@ -540,23 +566,6 @@ that changes are graded i.e., synapse changes in a step-wise manner much like a
 \textbf{multi-stable} synapse. A multi-stable synapse is an additive ensemble of
 many bistable components (\Fig{fig:fig_bistable_multistable}).
 
-\begin{figure}[]
-    \centering
-    \caption{\textit{All-or-none} v/s graded synapse and mechanism which may
-        give rise to them. \textbf{(A)} A bistable mechanism (red) controlling the 
-        synaptic strength (blue). Synaptic strength changes in \textit{all-or-none}
-        fashion. \textbf{(B)} A multi-stable mechanism (red) gives rise to a
-        graded synapse (blue). Synaptic strength changes in a step-wise manner. Note that 
-        a multi-stable mechanism can be constructed by adding multiple bistable
-        switches. In this case, 4 bistable switches were used (shown in light
-        blue in background. Red curve is the algebraic sum.).
-    }
-    \framebox{
-        \includegraphics[width=0.9\linewidth]{./bistable_multistabe_synapse.pdf}
-    }
-    \label{fig:fig_bistable_multistable}
-    \vspace{2mm}
-\end{figure}
 
 Whether \gls{camkii} is bistable in the synapse is still an open question;
 neither there is any concrete evidence that it is nor it has been ruled out that
