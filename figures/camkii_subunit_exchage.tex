@@ -1,0 +1,37 @@
+\RequirePackage{luatex85}
+\documentclass[crop,tikz]{standalone}
+\usepackage{xstring}
+\usepackage{chemfig}
+\input{macros}
+\usetikzlibrary{arrows,arrows.meta,calc,fit,positioning}
+\usepackage{pgfkeys}
+\usepackage{etoolbox}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=1
+        , every node/.style={node distance=5mm,inner sep=1pt}
+    ]
+    \edef\ballR{0.5}
+    \CAMKIIRING{camkii70}{0}{0}{4,5}{\ballR}{7}
+    \CAMKIIRING{camkii60}{4}{0}{4,5}{\ballR}{6}
+    \CAMKIIRING{camkii61}{-6}{0}{4}{\ballR}{6}
+
+    \node[ball color=blue,minimum size=\ballR cm,circle,right=of camkii60] (y) {};
+    \node[ball color=red,minimum size=\ballR cm,circle,right=of camkii61] (x) {};
+
+    \path (camkii70) -- 
+        node[] { \schemestart \arrow{<=>[$k_y^-$][$k_y^+$]} \schemestop } 
+        (camkii60);
+    \path (x) -- 
+        node[] { \schemestart \arrow{<=>[$k_x^+$][$k_x^-$]} \schemestop } 
+        (camkii70);
+
+    % and the plus sign
+    \path (camkii60) -- node[midway] {+} (y);
+    \path (camkii61) -- node[midway] {+} (x);
+    
+\end{tikzpicture}    
+
+
+\end{document}

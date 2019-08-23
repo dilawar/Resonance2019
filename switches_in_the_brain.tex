@@ -1,5 +1,4 @@
 \documentclass[]{resonance}
-\usepackage{pgf,tikz}
 \usepackage{nameref}
 \usepackage{pgfplots}
 \usepackage{grffile}
@@ -13,7 +12,6 @@
 \usepackage{todonotes}
 \usepackage{tabularx} 
 \usepackage{amssymb}
-\usetikzlibrary{shapes,backgrounds,calc,arrows,arrows.meta}
 \pgfplotsset{compat=1.15}
 
 \usepackage[acronym]{glossaries}
@@ -78,7 +76,7 @@ connections caused by sensory experiences create memories.
         can hold on to this memory.
     }\label{fig:engram}
     \framebox{
-        \includegraphics[width=0.95\linewidth]{engram.eps} 
+        \includegraphics[width=0.95\linewidth]{engram.pdf} 
     }
 \end{figure}
 
@@ -97,7 +95,7 @@ connections intact.  But on the other hand, our ability to learn depends on our
 brain's ability to change its connections. And here is the first challenge!
 
 \subsection{Learning quickly v/s forgetting slowly, a zero-sum game}\label{subsec:zero_sum} 
-\leftHighlight{\includegraphics[]{./foget_remember.eps}
+\leftHighlight{\includegraphics[]{./foget_remember.pdf}
 Ability to change (plasticity) is good for learning, but bad for remembering.}
 
 For $M_\text{Lalu}$ (or any other memory) to remain intact, each synapse which
@@ -149,7 +147,7 @@ output to input.}
         the \emph{closest} to the applied cue.
     }\label{fig:hopfield}
     \framebox{
-        \includegraphics[width=0.95\linewidth]{./hopfield.eps}
+        \includegraphics[width=0.95\linewidth]{./hopfield.pdf}
     }
 \end{figure}
 
@@ -209,7 +207,7 @@ maintaining its state}'' becomes the problem of ``\emph{molecule $X$ maintaining
 its state}'' -- a more concretely defined problem.
 
 Let's assume that $X$ is converted to its active form $X^*$  by adding a
-\rightHighlight{ \raggedright \includegraphics[width=3.5cm]{./fig_model.eps} }
+\rightHighlight{ \raggedright \includegraphics[width=3.5cm]{./fig_model.pdf} }
 phosphoryl group ($PO_3^{2-}$). The phosphoryl group is removed by a phosphatase
 and $X^*$ is turned back into inactive $X$. Phosphorylation and its
 counterpart dephosphorylation are very common motifs for controlling various
@@ -221,12 +219,9 @@ Let's mull over a solution to this problem of long term maintenance of $X^*$.
 Here is one potential solution. Can you think of any other solution?
 
 \begin{enumerate}
-    \item \textbf{Amplification:} $X^*$ \textbf{auto-phosphorylates} itself i.e. \tikz[baseline]{ 
-            \node (x) {$X$};
-            \node[right=9mm of x] (xp) {$X^*$};
-            \draw[-latex] (x) -- (xp);
-            \draw[-latex] (xp) edge[out=120, in=90] ([xshift=7mm]x);
-        }. If we manage to get sufficient $X^*$ somehow, it
+    \item \textbf{Amplification:} $X^*$ \textbf{auto-phosphorylates} itself i.e. 
+        \raisebox{-2pt}{\includegraphics[height=15pt]{self_phospho.pdf}}.
+        If we manage to get sufficient $X^*$ somehow, it
         will act as a catalyst to its own production. $X^*$ will always remain
         high.
     \item Dephosphorylation of $X^*$ is minimized by controlling the number of
@@ -280,7 +275,7 @@ i.e., newborn $X$ becomes $X^*$ if most molecules at the synapse are $X^*$.
         activates $X$ to $X^\sim$ to overcome \textit{turnover.}
     }\label{fig:model_bistable}
     \framebox{
-        \includegraphics[width=0.95\linewidth]{./fig_model_b.eps}
+        \includegraphics[width=0.95\linewidth]{./fig_model_b.pdf}
     }
     \vspace{2mm}
 \end{figure}
@@ -319,11 +314,6 @@ bistable switches in the synapses.
 % Bistable box
 \boxTexteven{Bistability in reaction network}
 {
-    \def\StateA{\tikz \node[circle, dashed, draw, inner sep=1pt] {\scriptsize
-    \textsf{A}};}
-    \def\StateB{\tikz \node[circle, dashed, draw, inner sep=1pt] {\scriptsize
-    \textsf{B}};}
-
     In a world full of fluctuations, stability is indeed a very useful property.
     Life is remarkably stable even though it is made up of inherently noisy
     components. Bistable chemical networks are ubiquitous in biology. In
@@ -340,17 +330,17 @@ bistable switches in the synapses.
     states).
 
     \vspace{2mm} 
-    \includegraphics[width=\linewidth]{./stability_noise.eps} 
+    \includegraphics[width=\linewidth]{./stability_noise.pdf} 
     {\footnotesize \textbf{(Figure A)} 
         \textbf{(i)} A conceptual model of bistability.  The
-        energy landscape of a bistable system has two minima (\protect\StateA and
-        \protect\StateB), therefore, the system always ends up in either of them. It is a
+        energy landscape of a bistable system has two minima ($A$ and
+        $B$), therefore, the system always ends up in either of them. It is a
         deterministic bistable system. \textbf{(ii)} A conceptual representation
         of stochastic bistable system as state transition diagram.  The arrows
         depict the probability of transition from one state to the other. In
-        \textbf{(iii)} We simulate the system described in \textbf{B} with probability
-        of transition from A to B ($P(A\protect\rightarrow B)$), and from B to A
-        ($P(B\protect\rightarrow A)$) set equal to 0.01.
+        \textbf{(iii)} We simulate the system described in $\textbf{B}$ with probability
+        of transition from $A$ to $B$ ($P(A\protect\rightarrow B)$), and from
+        $B$ to $A$ ($P(B\protect\rightarrow A)$) set equal to 0.01.
     }
 
     \vspace{2mm}
@@ -363,7 +353,7 @@ bistable switches in the synapses.
     \begin{center}
     \begin{tikzpicture}[scale=1 , every node/.style={} ]
         \node[] (img) {
-                \includegraphics[width=6cm]{./strong_bis_naren_and_bhalla_87mm.eps}
+                \includegraphics[width=6cm]{./strong_bis_naren_and_bhalla_87mm.pdf}
             };
 
         \node[right=5mm of img.south east, anchor=south west, text width=6cm, align=justify] 
@@ -396,7 +386,7 @@ living neuron is still an open question (see \textit{Box 2} for an overview of
 \gls{camkii} properties at a synapse.).
 
 \rightHighlight{
-    \includegraphics[width=4cm]{./lisman_bistable_small.eps}
+    \includegraphics[width=4cm]{./lisman_bistable_small.pdf}
     Reaction in a bistable switch proposed by John Lisman. Modified
     from \cite{lisman1985}.
     \label{fig:lisman}
@@ -440,7 +430,7 @@ periodically recharge these capacitors.
         time in its stable states.
     }\label{fig:camkii_sync}
     \framebox{
-        \includegraphics[width=0.95\linewidth]{figure_sync_114mm.eps}
+        \includegraphics[width=0.95\linewidth]{figure_sync_114mm.pdf}
     }
     \vspace{3mm}
 \end{figure}
@@ -491,7 +481,7 @@ retaining information.
     synapse (C).
 
     \vspace{2mm}
-    \includegraphics[width=0.9\linewidth]{./camkii_properties.eps} \\
+    \includegraphics[width=0.9\linewidth]{./camkii_properties.pdf} \\
     \textbf{Figure C.} \textbf{(i)} Summary of \gls{camkii} pathway. Upon its influx into
     the synapse, \gls{ca} binds to \gls{cam} and creates a complex \gls{cacam}.
     \gls{cacam} binds to \gls{camkii} and phosphorylate it's subunit (red
@@ -536,7 +526,7 @@ retaining information.
         blue in background. Red curve is the algebraic sum.).
     }
     \framebox{
-        \includegraphics[width=0.9\linewidth]{./bistable_multistabe_synapse.eps}
+        \includegraphics[width=0.9\linewidth]{./bistable_multistabe_synapse.pdf}
     }
     \label{fig:fig_bistable_multistable}
     \vspace{2mm}

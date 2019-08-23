@@ -1,0 +1,12 @@
+\RequirePackage{luatex85,shellesc}
+\documentclass[crop,tikz]{standalone}
+\usepackage{pgfplots}
+\usetikzlibrary{calc,positioning}
+\begin{document}
+\tikz[baseline]{ 
+    \node (x) {$X$};
+    \node[right=9mm of x] (xp) {$X^*$};
+    \draw[-latex] (x) -- (xp);
+    \draw[-latex] (xp) edge[out=120, in=90] ([xshift=7mm]x);
+}
+\end{document}
