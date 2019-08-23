@@ -810,9 +810,8 @@ bindingoffset=1.15cm,
 \newtoks\boxHead
 \newcounter{boxTextcount}
 \newcommand{\newboxText}{\stepcounter{boxTextcount} \theboxTextcount}
-\newcommand\boxTextodd[2]{\par\vskip 0pt\noindent\setlength{\fboxsep}{5mm}\fbox{\parbox{13.5cm}{\fontsize{9}{13}\selectfont{\bfseries
-\begin{center} Box \newboxText. #1 \end{center}}\par\vskip 0pt \par #2}}}
-\newcommand\boxTexteven[2]{\par\vskip 0pt\noindent\hspace*{-4.5cm}\setlength{\fboxsep}{5mm}\fbox{\parbox{13.5cm}{\fontsize{9}{13}\selectfont{\begin{center} \bfseries Box \newboxText. #1 \end{center} } \par\vskip 0pt \par #2}}}
+\newcommand\boxTextodd[2]{\par\vskip 15pt\noindent\setlength{\fboxsep}{5mm}\fbox{\parbox{13.5cm}{\fontsize{9}{13}\selectfont{\bfseries \centering Box \newboxText. #1}\par\vskip 15pt \par #2}}}
+\newcommand\boxTexteven[2]{\par\vskip 15pt\noindent\hspace*{-4.5cm}\setlength{\fboxsep}{5mm}\fbox{\parbox{13.5cm}{\fontsize{9}{13}\selectfont{\bfseries \centering Box \newboxText. #1}\par\vskip 15pt \par #2}}}
 
 
 
